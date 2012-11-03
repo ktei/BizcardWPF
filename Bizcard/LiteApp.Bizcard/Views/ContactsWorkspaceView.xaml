@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="LiteApp.Bizcard.Views.ContactsWorkspaceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:local="clr-namespace:LiteApp.Bizcard.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <local:BooleanToVisiblityConverter x:Key="boolToVis" Reverse="True"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" MinWidth="200" MaxWidth="500" />
+            <ColumnDefinition Width="2" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <metro:ProgressRing IsActive="{Binding IsBusy, Mode=OneWay}"/>
+            <ListBox ItemsSource="{Binding Contacts, Mode=OneWay}" Visibility="{Binding IsBusy, Mode=OneWay, Converter={StaticResource boolToVis}}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name, Mode=OneWay}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <GridSplitter Grid.Column="1" Background="Gray" HorizontalAlignment="Stretch" />
+        <Grid Grid.Column="2">
+            <ContentControl/>
+        </Grid>
+    </Grid>
+</UserControl>

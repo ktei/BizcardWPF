@@ -8,36 +8,23 @@ using System.ComponentModel.Composition;
 using LiteApp.Bizcard.Data;
 using LiteApp.Bizcard.Helpers;
 using System.Collections.ObjectModel;
+using System.Threading;
 
 namespace LiteApp.Bizcard.ViewModels
 {
     [Export(typeof(IWorkspace))]
     [ExportMetadata("Name", "Contacts")]
-    public class ContactsWorkspaceViewModel : Conductor<Screen>, IWorkspace
+    public class ContactsWorkspaceViewModel : Conductor<PropertyChangedBase>.Collection.OneActive, IWorkspace
     {
         IContactRepository _contactRepository;
-        BindableCollection<ContactViewModel> _contactsSource;
-        ReadOnlyObservableCollection<ContactViewModel> _contactsReadOnly;
         bool _isBusy;
+        bool _nothingIsSelected;
 
-        
         [Import]
         public RepositoryFactory RepositoryFactory { get; set; }
 
         [Import]
         public IGlobalConfiguration Configuration { get; set; }
-
-        public IEnumerable<ContactViewModel> Contacts
-        {
-            get
-            {
-                if (_contactsReadOnly == null)
-                {
-                    LoadContacts();
-                }
-                return _contactsReadOnly;
-            }
-        }
 
         public IContactRepository ContactRepository
         {
@@ -64,15 +51,59 @@ namespace LiteApp.Bizcard.ViewModels
             }
         }
 
+        public bool NothingIsSelected
+        {
+            get { return _nothingIsSelected; }
+            private set
+            {
+                if (_nothingIsSelected != value)
+                {
+                    _nothingIsSelected = value;
+                    NotifyOfPropertyChange(() => NothingIsSelected);
+                }
+            }
+        }
+
+        public override void ActivateItem(PropertyChangedBase item)
+        {
+            NothingIsSelected = item == null;
+            base.ActivateItem(item);
+        }
+
+        protected override void OnInitialize()
+        {
+            LoadContacts();
+        }
+
         void LoadContacts()
         {
-            IsBusy = true;
-            ContactRepository.LoadEntitiesAsync(result =>
+            if (IsBusy)
+                return;
+            System.Threading.Tasks.Task.Factory.StartNew(() =>
                 {
-                    _contactsSource = new BindableCollection<ContactViewModel>(result.Data.Select(x => new ContactViewModel(x)));
-                    _contactsReadOnly = new ReadOnlyObservableCollection<ContactViewModel>(_contactsSource);
-                    NotifyOfPropertyChange(() => Contacts);
-                    IsBusy = false;
+                    try
+                    {
+                        IsBusy = true;
+                        if (Configuration.MockDelay)
+                        {
+                            Thread.Sleep(Configuration.DelayInterval);
+                        }
+                        var data = ContactRepository.GetContacts();
+                        Items.AddRange(data.Select(x => new ContactViewModel(x)));
+                        if (Items.Count > 0)
+                        {
+                            ActivateItem(Items[0]);
+                        }
+                    }
+                    catch
+                    {
+                        // TODO: handle exception properly
+                        throw;
+                    }
+                    finally
+                    {
+                        IsBusy = false;
+                    }
                 });
         }
     }

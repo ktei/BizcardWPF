@@ -12,18 +12,21 @@ namespace LiteApp.Bizcard.Data.Mock
     [Export(typeof(IRepository))]
     [ExportMetadata("DataSource", DataSource.Mock)]
     [ExportMetadata("Contract", typeof(IContactRepository))]
-    public class ContactRepository : RepositoryBase<Contact>, IContactRepository
+    public class ContactRepository : IContactRepository
     {
-        protected override AsyncResult<IEnumerable<Contact>> OnLoadingEntities()
+        List<Contact> _contacts;
+
+        public IEnumerable<Contact> GetContacts()
         {
-            Thread.Sleep(3000);
-            var entities = new List<Contact>();
-            for (int i = 0; i < 10; ++i)
+            if (_contacts == null)
             {
-                entities.Add(new Contact() { Name = "Name " + i });
+                _contacts = new List<Contact>();
+                for (int i = 0; i < 10; ++i)
+                {
+                    _contacts.Add(new Contact() { Name = "Name " + i });
+                }
             }
-            Entities = entities;
-            return base.OnLoadingEntities();
+            return _contacts;
         }
     }
 }

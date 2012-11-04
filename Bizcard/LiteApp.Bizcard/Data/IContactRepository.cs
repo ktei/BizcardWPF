@@ -8,6 +8,6 @@ namespace LiteApp.Bizcard.Data
 {
     public interface IContactRepository : IRepository
     {
-        void LoadEntitiesAsync(Action<AsyncResult<IEnumerable<Contact>>> callback);
+        IEnumerable<Contact> GetContacts();
     }
 }

@@ -8,5 +8,7 @@ namespace LiteApp.Bizcard.Framework
     public interface IGlobalConfiguration
     {
         DataSource DataSource { get; }
+        bool MockDelay { get; }
+        int DelayInterval { get; }
     }
 }

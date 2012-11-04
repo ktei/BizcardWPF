@@ -5,10 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:local="clr-namespace:LiteApp.Bizcard.Views"
+             xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
-        <local:BooleanToVisiblityConverter x:Key="boolToVis" Reverse="True"/>
+        <local:BooleanToVisiblityConverter x:Key="boolToVis" />
+        <local:BooleanToVisiblityConverter x:Key="boolToVisReverse" Reverse="True"/>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -18,7 +20,7 @@
         </Grid.ColumnDefinitions>
         <Grid>
             <metro:ProgressRing IsActive="{Binding IsBusy, Mode=OneWay}"/>
-            <ListBox ItemsSource="{Binding Contacts, Mode=OneWay}" Visibility="{Binding IsBusy, Mode=OneWay, Converter={StaticResource boolToVis}}">
+            <ListBox x:Name="Items" Visibility="{Binding IsBusy, Mode=OneWay, Converter={StaticResource boolToVisReverse}}" SelectionMode="Extended">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name, Mode=OneWay}"/>
@@ -28,7 +30,9 @@
         </Grid>
         <GridSplitter Grid.Column="1" Background="Gray" HorizontalAlignment="Stretch" />
         <Grid Grid.Column="2">
-            <ContentControl/>
+            <ContentControl cal:View.Context="{Binding ActiveItem.State, Mode=TwoWay}"
+                            cal:View.Model="{Binding ActiveItem}" Visibility="{Binding NothingIsSelected, Mode=OneWay, Converter={StaticResource boolToVisReverse}}" />
+            <TextBlock Text="Select a contact to view" Visibility="{Binding NothingIsSelected, Mode=OneWay, Converter={StaticResource boolToVis}}"/>
         </Grid>
     </Grid>
 </UserControl>

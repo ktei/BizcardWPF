@@ -4,10 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:cal="http://www.caliburnproject.org"
+             xmlns:local="clr-namespace:LiteApp.Bizcard.Views.Contact"
+             xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel>
-        <TextBox Width="200" Height="23"/>
-        <Button Content="Display" cal:Message.Attach="ChangeState('Display')" />
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Margin="0,10" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left">
+            <local:EditForm Width="700" />
+        </ScrollViewer>
+        <Border Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Button cal:Message.Attach="Save" Content="Save" Foreground="White"  Background="{StaticResource Main}" Width="85" />
+                <Button cal:Message.Attach="Rollback" Content="Cancel" Foreground="White" Background="{StaticResource Main}" Width="85" />
+            </StackPanel>
+        </Border>
+    </Grid>
+
 </UserControl>

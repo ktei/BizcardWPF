@@ -8,12 +8,14 @@ using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.Reflection;
 using System.ComponentModel.Composition;
+using LiteApp.Bizcard.Data.Sterling;
 
 namespace LiteApp.Bizcard
 {
     public class AppBootstrapper : Bootstrapper<IShell>
     {
         CompositionContainer _container;
+        SterlingService _sterlingService;
 
         #region Properties
 
@@ -29,6 +31,19 @@ namespace LiteApp.Bizcard
         protected override void Configure()
         {
             ConfigureContainer();
+        }
+
+        protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
+        {
+            base.OnStartup(sender, e);
+            _sterlingService = new SterlingService();
+            _sterlingService.StartService();
+        }
+
+        protected override void OnExit(object sender, EventArgs e)
+        {
+            SterlingService.Current.Dispose();
+            base.OnExit(sender, e);
         }
 
         protected override object GetInstance(Type serviceType, string key)

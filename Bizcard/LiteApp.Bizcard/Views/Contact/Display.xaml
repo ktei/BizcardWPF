@@ -6,8 +6,10 @@
              xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel>
-        <TextBlock Text="{Binding Name, Mode=OneWay}"/>
-        <Button cal:Message.Attach="ChangeState('Edit')" Content="Edit"/>
+    
+    <StackPanel Margin="5">
+        
+        <TextBlock Text="{Binding Name, Mode=OneWay}" FontSize="26" FontWeight="DemiBold"/>
+        
     </StackPanel>
 </UserControl>

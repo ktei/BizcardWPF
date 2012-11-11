@@ -1,25 +1,147 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
 using Caliburn.Micro;
+using LiteApp.Bizcard.Helpers;
 using LiteApp.Bizcard.Models;
+using System.ComponentModel.Composition;
+using LiteApp.Bizcard.Data;
+using System.Linq;
+using System;
 
 namespace LiteApp.Bizcard.ViewModels
 {
-    public class ContactViewModel : PropertyChangedBase
+    public class ContactViewModel : EditableViewModel
     {
-        Contact _contact;
         ContactState _state = ContactState.Display;
+        BindableCollection<PhoneViewModel> _phones;
+        BindableCollection<AddressViewModel> _addresses;
+        readonly Contact _contact;
+        readonly ContactsWorkspaceViewModel _contactsWorkspace;
+        static IContactRepository _contactRepository;
 
-        public ContactViewModel(Contact contact)
+        public ContactViewModel(Contact model, ContactsWorkspaceViewModel workspace)
         {
-            _contact = contact;
+            _contact = model;
+            _contactsWorkspace = workspace;
+        }
+
+        [Import]
+        public RepositoryFactory RepositoryFactory { get; set; }
+
+        public IContactRepository ContactRepository
+        {
+            get
+            {
+                if (_contactRepository == null)
+                {
+                    this.SatisfyImports();
+                    _contactRepository = RepositoryFactory.GetRepository<IContactRepository>();
+                }
+                return _contactRepository;
+            }
+        }
+        
+        public int Id
+        {
+            get { return _contact.Id; }
         }
 
         public string Name
         {
             get { return _contact.Name; }
+            set
+            {
+                if (_contact.Name != value)
+                {
+                    _contact.Name = value;
+                    IsDirty = true;
+                    NotifyOfPropertyChange(() => Name);
+                }
+            }
+        }
+
+        public string Organization
+        {
+            get { return _contact.Organization; }
+            set
+            {
+                if (_contact.Organization != value)
+                {
+                    _contact.Organization = value;
+                    IsDirty = true;
+                    NotifyOfPropertyChange(() => Organization);
+                }
+            }
+        }
+
+        public string Email
+        {
+            get { return _contact.Email; }
+            set
+            {
+                if (_contact.Email != value)
+                {
+                    _contact.Email = value;
+                    IsDirty = true;
+                    NotifyOfPropertyChange(() => Email);
+                }
+            }
+        }
+
+        public string JobTitle
+        {
+            get { return _contact.JobTitle; }
+            set
+            {
+                if (_contact.JobTitle != value)
+                {
+                    _contact.JobTitle = value;
+                    IsDirty = true;
+                    NotifyOfPropertyChange(() => JobTitle);
+                }
+            }
+        }
+
+        public IEnumerable<PhoneViewModel> Phones
+        {
+            get
+            {
+                if (_phones == null)
+                {
+                    if (_contact.Phones == null)
+                    {
+                        _phones = new BindableCollection<PhoneViewModel>();
+                    }
+                    else
+                    {
+                        List<PhoneViewModel> src = new List<PhoneViewModel>(_contact.Phones.Count);
+                        _contact.Phones.ForEach(x => src.Add(new PhoneViewModel(x, this)));
+                        _phones = new BindableCollection<PhoneViewModel>(src);
+                    }
+                }
+                return _phones;
+            }
+        }
+
+        public IEnumerable<AddressViewModel> Addresses
+        {
+            get
+            {
+                if (_addresses == null)
+                {
+                    if (_contact.Addresses == null)
+                    {
+                        _addresses = new BindableCollection<AddressViewModel>();
+                    }
+                    else
+                    {
+                        List<AddressViewModel> src = new List<AddressViewModel>(_contact.Addresses.Count);
+                        _contact.Addresses.ForEach(x => src.Add(new AddressViewModel(x, this)));
+                        _addresses = new BindableCollection<AddressViewModel>(src);
+                    }
+                }
+                return _addresses;
+            }
         }
 
         public ContactState State
@@ -35,17 +157,83 @@ namespace LiteApp.Bizcard.ViewModels
             }
         }
 
-        public void ChangeState(string state)
+        public ICommand AddPhoneCommand
         {
-            if (state == "Display")
+            get
             {
-                State = ContactState.Display;
-            }
-            else
-            {
-                State = ContactState.Edit;
+                return new RelayCommand(x =>
+                    {
+                        Phone phone = new Phone();
+                        var model = new PhoneViewModel(phone, this);
+                        _phones.Add(model);
+                        IsDirty = true;
+                    });
             }
         }
 
+        public ICommand RemovePhoneCommand
+        {
+            get
+            {
+                return new RelayCommand(x =>
+                    {
+                        _phones.Remove((PhoneViewModel)x);
+                        IsDirty = true;
+                    });
+            }
+        }
+
+        public ICommand AddAddressCommand
+        {
+            get
+            {
+                return new RelayCommand(x =>
+                    {
+                        Address address = new Address();
+                        var model = new AddressViewModel(address, this);
+                        _addresses.Add(model);
+                        IsDirty = true;
+                    });
+            }
+        }
+
+        public ICommand RemoveAddressCommand
+        {
+            get
+            {
+                return new RelayCommand(x =>
+                    {
+                        _addresses.Remove((AddressViewModel)x);
+                        IsDirty = true;
+                    });
+            }
+        }
+
+        public void Edit()
+        {
+            State = ContactState.Edit;
+        }
+        
+        public void Rollback()
+        {
+            _contactsWorkspace.Rollback(this);
+        }
+
+        public void Save()
+        {
+            if (IsDirty)
+            {
+                PrepareSave();
+                ContactRepository.Save(_contact);
+                IsDirty = false;
+            }
+            State = ContactState.Display;
+        }
+
+        void PrepareSave()
+        {
+            _contact.Phones = new List<Phone>(_phones.Select(x => x.Model));
+            _contact.Addresses = new List<Address>(_addresses.Select(x => x.Model));
+        }
     }
 }

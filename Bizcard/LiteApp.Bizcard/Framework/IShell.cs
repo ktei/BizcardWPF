@@ -8,5 +8,6 @@ namespace LiteApp.Bizcard.Framework
 {
     public interface IShell : IConductActiveItem
     {
+        void ActivateWorkspace(string name);
     }
 }

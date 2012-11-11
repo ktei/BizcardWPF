@@ -9,7 +9,9 @@
                 <ResourceDictionary>
                     <local:AppBootstrapper x:Key="bootstrapper" />
                     <resx:ApplicationResources x:Key="AppResx"/>
+                    
                 </ResourceDictionary>
+                <ResourceDictionary Source="Views/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

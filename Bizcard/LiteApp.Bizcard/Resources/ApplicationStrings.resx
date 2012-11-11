@@ -117,7 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddressLabel" xml:space="preserve">
+    <value>Address</value>
+  </data>
   <data name="ApplicationName" xml:space="preserve">
     <value>Bizcard</value>
+  </data>
+  <data name="EmailLabel" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="JobTitleLabel" xml:space="preserve">
+    <value>Job Title</value>
+  </data>
+  <data name="MsnLabel" xml:space="preserve">
+    <value>MSN</value>
+  </data>
+  <data name="NameLabel" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NotesHeader" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="NotesLabel" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="OrganizationLabel" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="OtherInfoHeader" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="PhoneLabel" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="PrimaryInfoHeader" xml:space="preserve">
+    <value>Primary</value>
+  </data>
+  <data name="QQLabel" xml:space="preserve">
+    <value>QQ</value>
+  </data>
+  <data name="SkypeLabel" xml:space="preserve">
+    <value>Skype</value>
+  </data>
+  <data name="WebsiteLabel" xml:space="preserve">
+    <value>Website</value>
   </data>
 </root>

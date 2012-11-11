@@ -14,12 +14,12 @@ namespace LiteApp.Bizcard
 
         public DataSource DataSource
         {
-            get { return DataSource.Mock; }
+            get { return DataSource.Sterling; }
         }
 
         public bool MockDelay
         {
-            get { return true; }
+            get { return false; }
         }
 
         public int DelayInterval

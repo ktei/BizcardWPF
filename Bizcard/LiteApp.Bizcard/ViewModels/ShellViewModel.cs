@@ -13,22 +13,15 @@ namespace LiteApp.Bizcard.ViewModels
     [Export(typeof(IShell))]
     public class ShellViewModel : Conductor<IScreen>.Collection.OneActive, IShell
     {
+        public ShellViewModel()
+        {
+            DisplayName = ApplicationStrings.ApplicationName;
+        }
+
         #region Properties
 
         [ImportMany]
         public IEnumerable<Lazy<IWorkspace, IWorkspaceMetadata>> Workspaces { get; set; }
-
-        public override string DisplayName
-        {
-            get
-            {
-                return ApplicationStrings.ApplicationName;
-            }
-            set
-            {
-                base.DisplayName = value;
-            }
-        }
 
         #endregion // Properties
 

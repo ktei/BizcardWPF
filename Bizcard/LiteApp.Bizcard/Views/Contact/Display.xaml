@@ -13,29 +13,29 @@
 
     <ScrollViewer Margin="0,10" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
         <StackPanel>
-            <TextBlock Text="{Binding Name, Mode=OneWay}" FontSize="26" FontWeight="Thin" TextWrapping="Wrap" />
+            <TextBlock Text="{Binding Name, Mode=OneWay}" FontSize="30" FontWeight="Thin" TextWrapping="Wrap" />
             <Rectangle HorizontalAlignment="Stretch" Fill="{StaticResource Secondary}" Height="1" Margin="0,5,0,10"/>
             <HeaderedContentControl Focusable="False">
                 <HeaderedContentControl.Header>
-                    <TextBlock FontWeight="Bold" Text="{Binding Strings.OrganizationLabel, Source={StaticResource AppResx}}" />
+                    <TextBlock Text="{Binding Strings.OrganizationLabel, Source={StaticResource AppResx}}" />
                 </HeaderedContentControl.Header>
                 <TextBlock Text="{Binding Organization, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
             </HeaderedContentControl>
             <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
                 <HeaderedContentControl.Header>
-                    <TextBlock FontWeight="Bold" Text="{Binding Strings.JobTitleLabel, Source={StaticResource AppResx}}"/>
+                    <TextBlock Text="{Binding Strings.JobTitleLabel, Source={StaticResource AppResx}}"/>
                 </HeaderedContentControl.Header>
                 <TextBlock Text="{Binding JobTitle, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
             </HeaderedContentControl>
             <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
                 <HeaderedContentControl.Header>
-                    <TextBlock FontWeight="Bold" Text="{Binding Strings.EmailLabel, Source={StaticResource AppResx}}"/>
+                    <TextBlock Text="{Binding Strings.EmailLabel, Source={StaticResource AppResx}}"/>
                 </HeaderedContentControl.Header>
                 <TextBlock Text="{Binding Email, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
             </HeaderedContentControl>
             <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
                 <HeaderedContentControl.Header>
-                    <TextBlock FontWeight="Bold" Text="{Binding Strings.PhoneLabel, Source={StaticResource AppResx}}"/>
+                    <TextBlock Text="{Binding Strings.PhoneLabel, Source={StaticResource AppResx}}"/>
                 </HeaderedContentControl.Header>
                 <ItemsControl ItemsSource="{Binding Phones, Mode=OneWay}" Focusable="False">
                     <ItemsControl.ItemTemplate>
@@ -55,7 +55,7 @@
             </HeaderedContentControl>
             <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
                 <HeaderedContentControl.Header>
-                    <TextBlock FontWeight="Bold" Text="{Binding Strings.AddressLabel, Source={StaticResource AppResx}}"/>
+                    <TextBlock Text="{Binding Strings.AddressLabel, Source={StaticResource AppResx}}"/>
                 </HeaderedContentControl.Header>
                 <ItemsControl ItemsSource="{Binding Addresses, Mode=OneWay}" Focusable="False">
                     <ItemsControl.ItemTemplate>
@@ -75,32 +75,32 @@
             </HeaderedContentControl>
             <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
                 <HeaderedContentControl.Header>
-                    <TextBlock FontWeight="Bold" Text="{Binding Strings.SkypeLabel, Source={StaticResource AppResx}}"/>
+                    <TextBlock Text="{Binding Strings.SkypeLabel, Source={StaticResource AppResx}}"/>
                 </HeaderedContentControl.Header>
                 <TextBlock Text="{Binding Skype, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
             </HeaderedContentControl>
             <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
                 <HeaderedContentControl.Header>
-                    <TextBlock FontWeight="Bold" Text="{Binding Strings.MsnLabel, Source={StaticResource AppResx}}"/>
+                    <TextBlock Text="{Binding Strings.MsnLabel, Source={StaticResource AppResx}}"/>
                 </HeaderedContentControl.Header>
                 <TextBlock Text="{Binding MSN, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
             </HeaderedContentControl>
             <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
                 <HeaderedContentControl.Header>
-                    <TextBlock FontWeight="Bold" Text="{Binding Strings.QQLabel, Source={StaticResource AppResx}}"/>
+                    <TextBlock Text="{Binding Strings.QQLabel, Source={StaticResource AppResx}}"/>
                 </HeaderedContentControl.Header>
                 <TextBlock Text="{Binding QQ, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
             </HeaderedContentControl>
             <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
                 <HeaderedContentControl.Header>
-                    <TextBlock FontWeight="Bold" Text="{Binding Strings.WebsiteLabel, Source={StaticResource AppResx}}"/>
+                    <TextBlock Text="{Binding Strings.WebsiteLabel, Source={StaticResource AppResx}}"/>
                 </HeaderedContentControl.Header>
                 <TextBlock Text="{Binding Website, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
             </HeaderedContentControl>
             <Rectangle HorizontalAlignment="Stretch" Fill="{StaticResource Secondary}" Height="1" Margin="0,20,0,10"/>
             <HeaderedContentControl Focusable="False">
                 <HeaderedContentControl.Header>
-                    <TextBlock FontWeight="Bold" Text="{Binding Strings.NotesLabel, Source={StaticResource AppResx}}"/>
+                    <TextBlock Text="{Binding Strings.NotesLabel, Source={StaticResource AppResx}}"/>
                 </HeaderedContentControl.Header>
                 <TextBlock Text="{Binding Notes, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
             </HeaderedContentControl>

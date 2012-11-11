@@ -108,6 +108,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ApplicationStrings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\EnumStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnumStrings.resx</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AddressViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\ContactsWorkspaceViewModel.cs" />
@@ -157,6 +162,12 @@
     <EmbeddedResource Include="Resources\ApplicationStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ApplicationStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ApplicationStrings.zh.resx" />
+    <EmbeddedResource Include="Resources\EnumStrings.zh.resx" />
+    <EmbeddedResource Include="Resources\EnumStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EnumStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />

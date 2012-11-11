@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using LiteApp.Bizcard.Resources;
 
 namespace LiteApp.Bizcard.Models
 {
     public enum AddressType
     {
-        [Description("Home")]
+        [Description("AddressType_Home")]
         Home = 0,
-        [Description("Work")]
+        [Description("AddressType_Work")]
         Work,
-        [Description("Other")]
+        [Description("AddressType_Other")]
         Other
     }
 }

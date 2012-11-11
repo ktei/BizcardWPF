@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using System.ComponentModel;
+using System.Resources;
+using LiteApp.Bizcard.Resources;
 
 namespace LiteApp.Bizcard.Helpers
 {
     public static class EnumHelper
     {
+        static ResourceManager rm = EnumStrings.ResourceManager;
+
         /// <summary>
         /// Retrieve the description on the enum, e.g.
         /// [Description("Bright Pink")]
@@ -29,7 +33,8 @@ namespace LiteApp.Bizcard.Helpers
 
                 if (attrs != null && attrs.Length > 0)
                 {
-                    return ((DescriptionAttribute)attrs[0]).Description;
+                    var token = ((DescriptionAttribute)attrs[0]).Description;
+                    return rm.GetString(token);
                 }
             }
 

@@ -13,25 +13,25 @@
             <StackPanel>
                 <HeaderedContentControl Focusable="False">
                     <HeaderedContentControl.Header>
-                        <TextBlock FontWeight="Bold" Text="{Binding Strings.NameLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
+                        <TextBlock Text="{Binding Strings.NameLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
                     </HeaderedContentControl.Header>
                     <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
                 </HeaderedContentControl>
                 <HeaderedContentControl Margin="0,10,0,0" Focusable="False">
                     <HeaderedContentControl.Header>
-                        <TextBlock FontWeight="Bold" Text="{Binding Strings.OrganizationLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
+                        <TextBlock Text="{Binding Strings.OrganizationLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
                     </HeaderedContentControl.Header>
                     <TextBox Text="{Binding Organization, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" />
                 </HeaderedContentControl>
                 <HeaderedContentControl Margin="0,10,0,0" Focusable="False">
                     <HeaderedContentControl.Header>
-                        <TextBlock FontWeight="Bold" Text="{Binding Strings.JobTitleLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
+                        <TextBlock Text="{Binding Strings.JobTitleLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
                     </HeaderedContentControl.Header>
                     <TextBox Text="{Binding JobTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" />
                 </HeaderedContentControl>
                 <HeaderedContentControl Margin="0,10,0,0" Focusable="False">
                     <HeaderedContentControl.Header>
-                        <TextBlock FontWeight="Bold" Text="{Binding Strings.EmailLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
+                        <TextBlock Text="{Binding Strings.EmailLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
                     </HeaderedContentControl.Header>
                     <TextBox Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" />
                 </HeaderedContentControl>
@@ -42,7 +42,7 @@
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock FontWeight="Bold" Text="{Binding Strings.PhoneLabel, Source={StaticResource AppResx}}" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Strings.PhoneLabel, Source={StaticResource AppResx}}" VerticalAlignment="Center"/>
                             <Button Grid.Column="1" Style="{DynamicResource MetroCircleButtonStyle}" Padding="5" Command="{Binding AddPhoneCommand, Mode=OneWay}">
                                 <Image Source="../../Resources/Images/add-16.png" Width="16" Height="16" />
                             </Button>
@@ -78,7 +78,7 @@
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock FontWeight="Bold" Text="{Binding Strings.AddressLabel, Source={StaticResource AppResx}}" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Strings.AddressLabel, Source={StaticResource AppResx}}" VerticalAlignment="Center"/>
                             <Button Grid.Column="1" Style="{DynamicResource MetroCircleButtonStyle}" Padding="5" Command="{Binding AddAddressCommand, Mode=OneWay}">
                                 <Image Source="../../Resources/Images/add-16.png" Width="16" Height="16" />
                             </Button>
@@ -113,31 +113,31 @@
             <StackPanel>
                 <HeaderedContentControl Focusable="False">
                     <HeaderedContentControl.Header>
-                        <TextBlock FontWeight="Bold" Text="{Binding Strings.SkypeLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
+                        <TextBlock Text="{Binding Strings.SkypeLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
                     </HeaderedContentControl.Header>
                     <TextBox Text="{Binding Skype, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" />
                 </HeaderedContentControl>
                 <HeaderedContentControl Focusable="False" Margin="0,10,0,0">
                     <HeaderedContentControl.Header>
-                        <TextBlock FontWeight="Bold" Text="{Binding Strings.MsnLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
+                        <TextBlock Text="{Binding Strings.MsnLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
                     </HeaderedContentControl.Header>
                     <TextBox Text="{Binding MSN, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" />
                 </HeaderedContentControl>
                 <HeaderedContentControl Focusable="False" Margin="0,10,0,0">
                     <HeaderedContentControl.Header>
-                        <TextBlock FontWeight="Bold" Text="{Binding Strings.QQLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
+                        <TextBlock Text="{Binding Strings.QQLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
                     </HeaderedContentControl.Header>
                     <TextBox Text="{Binding QQ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" />
                 </HeaderedContentControl>
                 <HeaderedContentControl Focusable="False" Margin="0,10,0,0">
                     <HeaderedContentControl.Header>
-                        <TextBlock FontWeight="Bold" Text="{Binding Strings.WebsiteLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
+                        <TextBlock Text="{Binding Strings.WebsiteLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
                     </HeaderedContentControl.Header>
                     <TextBox Text="{Binding Website, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" />
                 </HeaderedContentControl>
                 <HeaderedContentControl Focusable="False" Margin="0,10,0,0">
                     <HeaderedContentControl.Header>
-                        <TextBlock FontWeight="Bold" Text="{Binding Strings.NotesLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
+                        <TextBlock Text="{Binding Strings.NotesLabel, Source={StaticResource AppResx}}" Margin="0,0,0,3"/>
                     </HeaderedContentControl.Header>
                     <TextBox Text="{Binding Notes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True"
                              Height="150" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" />

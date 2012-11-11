@@ -126,15 +126,6 @@ namespace LiteApp.Bizcard.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Notes.
         /// </summary>
-        public static string NotesHeader {
-            get {
-                return ResourceManager.GetString("NotesHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Notes.
-        /// </summary>
         public static string NotesLabel {
             get {
                 return ResourceManager.GetString("NotesLabel", resourceCulture);

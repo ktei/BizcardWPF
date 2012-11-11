@@ -8,13 +8,13 @@ namespace LiteApp.Bizcard.Models
 {
     public enum PhoneType
     {
-        [Description("Home")]
+        [Description("PhoneType_Home")]
         Home = 0,
-        [Description("Mobile")]
+        [Description("PhoneType_Mobile")]
         Mobile,
-        [Description("Work")]
+        [Description("PhoneType_Work")]
         Work,
-        [Description("Other")]
+        [Description("PhoneType_Other")]
         Other
     }
 }

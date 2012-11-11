@@ -9,6 +9,7 @@ using System.ComponentModel.Composition.Primitives;
 using System.Reflection;
 using System.ComponentModel.Composition;
 using LiteApp.Bizcard.Data.Sterling;
+using System.Globalization;
 
 namespace LiteApp.Bizcard
 {
@@ -36,6 +37,8 @@ namespace LiteApp.Bizcard
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
         {
             base.OnStartup(sender, e);
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("zh");
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh");
             _sterlingService = new SterlingService();
             _sterlingService.StartService();
         }

@@ -69,7 +69,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Border BorderBrush="{StaticResource Secondary}" BorderThickness="0,0,0,1" Margin="5,0" Padding="0,5">
+            <Border Margin="5,0" Padding="0,5">
                 <StackPanel Orientation="Horizontal">
                     <Button cal:Message.Attach="Add" Padding="4" Style="{DynamicResource MetroCircleButtonStyle}" Margin="0,0,10,0">
                         <Image Source="../Resources/Images/add.png"/>

@@ -144,6 +144,76 @@ namespace LiteApp.Bizcard.ViewModels
             }
         }
 
+        public string Skype
+        {
+            get { return _contact.Skype; }
+            set
+            {
+                if (_contact.Skype != value)
+                {
+                    _contact.Skype = value;
+                    IsDirty = true;
+                    NotifyOfPropertyChange(() => Skype);
+                }
+            }
+        }
+
+        public string Website
+        {
+            get { return _contact.Website; }
+            set
+            {
+                if (_contact.Website != value)
+                {
+                    _contact.Website = value;
+                    IsDirty = true;
+                    NotifyOfPropertyChange(() => Website);
+                }
+            }
+        }
+
+        public string MSN
+        {
+            get { return _contact.MSN; }
+            set
+            {
+                if (_contact.MSN != value)
+                {
+                    _contact.MSN = value;
+                    IsDirty = true;
+                    NotifyOfPropertyChange(() => MSN);
+                }
+            }
+        }
+
+        public string QQ
+        {
+            get { return _contact.QQ; }
+            set
+            {
+                if (_contact.QQ != value)
+                {
+                    _contact.QQ = value;
+                    IsDirty = true;
+                    NotifyOfPropertyChange(() => QQ);
+                }
+            }
+        }
+
+        public string Notes
+        {
+            get { return _contact.Notes; }
+            set
+            {
+                if (_contact.Notes != value)
+                {
+                    _contact.Notes = value;
+                    IsDirty = true;
+                    NotifyOfPropertyChange(() => Notes);
+                }
+            }
+        }
+
         public ContactState State
         {
             get { return _state; }

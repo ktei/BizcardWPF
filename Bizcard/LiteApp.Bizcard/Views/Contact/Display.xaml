@@ -4,12 +4,106 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:cal="http://www.caliburnproject.org"
+             xmlns:view="clr-namespace:LiteApp.Bizcard.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    
-    <StackPanel Margin="5">
-        
-        <TextBlock Text="{Binding Name, Mode=OneWay}" FontSize="26" FontWeight="DemiBold"/>
-        
-    </StackPanel>
+    <UserControl.Resources>
+        <view:EnumToDescriptionConverter x:Key="enumToDesc"/>
+    </UserControl.Resources>
+
+    <ScrollViewer Margin="0,10" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock Text="{Binding Name, Mode=OneWay}" FontSize="26" FontWeight="Thin" TextWrapping="Wrap" />
+            <Rectangle HorizontalAlignment="Stretch" Fill="{StaticResource Secondary}" Height="1" Margin="0,5,0,10"/>
+            <HeaderedContentControl Focusable="False">
+                <HeaderedContentControl.Header>
+                    <TextBlock FontWeight="Bold" Text="{Binding Strings.OrganizationLabel, Source={StaticResource AppResx}}" />
+                </HeaderedContentControl.Header>
+                <TextBlock Text="{Binding Organization, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
+            </HeaderedContentControl>
+            <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
+                <HeaderedContentControl.Header>
+                    <TextBlock FontWeight="Bold" Text="{Binding Strings.JobTitleLabel, Source={StaticResource AppResx}}"/>
+                </HeaderedContentControl.Header>
+                <TextBlock Text="{Binding JobTitle, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
+            </HeaderedContentControl>
+            <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
+                <HeaderedContentControl.Header>
+                    <TextBlock FontWeight="Bold" Text="{Binding Strings.EmailLabel, Source={StaticResource AppResx}}"/>
+                </HeaderedContentControl.Header>
+                <TextBlock Text="{Binding Email, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
+            </HeaderedContentControl>
+            <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
+                <HeaderedContentControl.Header>
+                    <TextBlock FontWeight="Bold" Text="{Binding Strings.PhoneLabel, Source={StaticResource AppResx}}"/>
+                </HeaderedContentControl.Header>
+                <ItemsControl ItemsSource="{Binding Phones, Mode=OneWay}" Focusable="False">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,5,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Type, Converter={StaticResource enumToDesc}, Mode=OneWay}" Margin="0,0,10,0" Foreground="Gray" FontSize="20" FontWeight="Thin"/>
+                                <TextBlock Text="{Binding Number, Mode=OneWay}" FontSize="20" FontWeight="Thin"
+                                                 Grid.Column="1" TextWrapping="Wrap"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </HeaderedContentControl>
+            <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
+                <HeaderedContentControl.Header>
+                    <TextBlock FontWeight="Bold" Text="{Binding Strings.AddressLabel, Source={StaticResource AppResx}}"/>
+                </HeaderedContentControl.Header>
+                <ItemsControl ItemsSource="{Binding Addresses, Mode=OneWay}" Focusable="False">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,5,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Type, Converter={StaticResource enumToDesc}, Mode=OneWay}" Margin="0,0,10,0" Foreground="Gray" FontSize="20" FontWeight="Thin"/>
+                                <TextBlock Text="{Binding Address, Mode=OneWay}" FontSize="20" FontWeight="Thin"
+                                                 Grid.Column="1" TextWrapping="Wrap"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </HeaderedContentControl>
+            <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
+                <HeaderedContentControl.Header>
+                    <TextBlock FontWeight="Bold" Text="{Binding Strings.SkypeLabel, Source={StaticResource AppResx}}"/>
+                </HeaderedContentControl.Header>
+                <TextBlock Text="{Binding Skype, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
+            </HeaderedContentControl>
+            <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
+                <HeaderedContentControl.Header>
+                    <TextBlock FontWeight="Bold" Text="{Binding Strings.MsnLabel, Source={StaticResource AppResx}}"/>
+                </HeaderedContentControl.Header>
+                <TextBlock Text="{Binding MSN, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
+            </HeaderedContentControl>
+            <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
+                <HeaderedContentControl.Header>
+                    <TextBlock FontWeight="Bold" Text="{Binding Strings.QQLabel, Source={StaticResource AppResx}}"/>
+                </HeaderedContentControl.Header>
+                <TextBlock Text="{Binding QQ, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
+            </HeaderedContentControl>
+            <HeaderedContentControl Focusable="False" Margin="0,20,0,0">
+                <HeaderedContentControl.Header>
+                    <TextBlock FontWeight="Bold" Text="{Binding Strings.WebsiteLabel, Source={StaticResource AppResx}}"/>
+                </HeaderedContentControl.Header>
+                <TextBlock Text="{Binding Website, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
+            </HeaderedContentControl>
+            <Rectangle HorizontalAlignment="Stretch" Fill="{StaticResource Secondary}" Height="1" Margin="0,20,0,10"/>
+            <HeaderedContentControl Focusable="False">
+                <HeaderedContentControl.Header>
+                    <TextBlock FontWeight="Bold" Text="{Binding Strings.NotesLabel, Source={StaticResource AppResx}}"/>
+                </HeaderedContentControl.Header>
+                <TextBlock Text="{Binding Notes, Mode=OneWay}" FontSize="20" FontWeight="Thin" TextWrapping="Wrap" />
+            </HeaderedContentControl>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

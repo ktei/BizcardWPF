@@ -79,6 +79,15 @@ namespace LiteApp.Bizcard.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string CancelLabel {
+            get {
+                return ResourceManager.GetString("CancelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string EmailLabel {
@@ -174,6 +183,15 @@ namespace LiteApp.Bizcard.Resources {
         public static string QQLabel {
             get {
                 return ResourceManager.GetString("QQLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string SaveLabel {
+            get {
+                return ResourceManager.GetString("SaveLabel", resourceCulture);
             }
         }
         

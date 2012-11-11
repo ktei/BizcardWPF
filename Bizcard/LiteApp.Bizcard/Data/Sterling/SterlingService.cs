@@ -37,21 +37,6 @@ namespace LiteApp.Bizcard.Data.Sterling
             Current = this;
         }
 
-        public void Exiting()
-        {
-            if (Debugger.IsAttached && _logger != null)
-            {
-                _logger.Detach();
-            }
-        }
-
-        public void Exited()
-        {
-            Dispose();
-            _engine = null;
-            return;
-        }
-
         public void Dispose()
         {
             if (_engine != null)

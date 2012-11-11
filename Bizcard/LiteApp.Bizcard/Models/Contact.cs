@@ -15,6 +15,16 @@ namespace LiteApp.Bizcard.Models
 
         public string Email { get; set; }
 
+        public string Skype { get; set; }
+
+        public string Website { get; set; }
+
+        public string MSN { get; set; }
+
+        public string QQ { get; set; }
+
+        public string Notes { get; set; }
+
         public List<Phone> Phones { get; set; }
 
         public List<Address> Addresses { get; set; }

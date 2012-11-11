@@ -123,6 +123,9 @@
   <data name="ApplicationName" xml:space="preserve">
     <value>Bizcard</value>
   </data>
+  <data name="CancelLabel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="EmailLabel" xml:space="preserve">
     <value>Email</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="QQLabel" xml:space="preserve">
     <value>QQ</value>
+  </data>
+  <data name="SaveLabel" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="SkypeLabel" xml:space="preserve">
     <value>Skype</value>

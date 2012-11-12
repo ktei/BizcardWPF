@@ -78,6 +78,8 @@ namespace LiteApp.Bizcard.ViewModels
             if (index >= 0)
             {
                 Items.RemoveAt(index);
+                if (contact == ActiveItem)
+                    ActivateItem(null); // If removed item is active item, set active item to null to clear the view
                 if (contact.Id != 0)
                 {
                     // Find the original entity stored in database
@@ -114,7 +116,6 @@ namespace LiteApp.Bizcard.ViewModels
             ContactViewModel model = new ContactViewModel(newContact, this);
             model.State = ContactState.Edit;
             model.IsDirty = true;
-            Items.Insert(0, model);
             ActivateItem(model);
         }
 

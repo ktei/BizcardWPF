@@ -103,6 +103,7 @@
     <Compile Include="Models\ModelExtensions.cs" />
     <Compile Include="Models\Phone.cs" />
     <Compile Include="Models\PhoneType.cs" />
+    <Compile Include="Models\PinyinLookupEntry.cs" />
     <Compile Include="Resources\ApplicationResources.cs" />
     <Compile Include="Resources\ApplicationStrings.Designer.cs">
       <AutoGen>True</AutoGen>

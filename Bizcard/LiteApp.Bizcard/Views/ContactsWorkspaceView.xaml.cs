@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiteApp.Bizcard.ViewModels;
 
 namespace LiteApp.Bizcard.Views
 {
@@ -22,6 +23,11 @@ namespace LiteApp.Bizcard.Views
         public ContactsWorkspaceView()
         {
             InitializeComponent();
+        }
+
+        private void SearchBox_Search(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as ContactsWorkspaceViewModel).Search(SearchBox.Text.Trim());
         }
     }
 }

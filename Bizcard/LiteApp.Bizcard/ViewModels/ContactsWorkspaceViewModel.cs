@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using System.Collections;
 using LiteApp.Bizcard.Models;
+using System.Windows.Data;
 
 namespace LiteApp.Bizcard.ViewModels
 {
@@ -20,8 +21,8 @@ namespace LiteApp.Bizcard.ViewModels
     {
         IContactRepository _contactRepository;
         bool _isBusy;
-        bool _nothingIsSelected;
-        bool _canActivateItem = true;
+        bool _nothingIsSelected = true;
+        bool _isDeleting;
 
         [Import]
         public RepositoryFactory RepositoryFactory { get; set; }
@@ -60,7 +61,7 @@ namespace LiteApp.Bizcard.ViewModels
         public bool NothingIsSelected
         {
             get { return _nothingIsSelected; }
-            private set
+            set
             {
                 if (_nothingIsSelected != value)
                 {
@@ -69,6 +70,7 @@ namespace LiteApp.Bizcard.ViewModels
                 }
             }
         }
+
 
         public void Rollback(ContactViewModel contact)
         {
@@ -87,6 +89,22 @@ namespace LiteApp.Bizcard.ViewModels
                         ActivateItem(model);
                     }
                 }
+            }
+        }
+
+        public void Search(string searchText)
+        {
+            var collectionView = CollectionViewSource.GetDefaultView(Items);
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                collectionView.Filter = x => { return true; };
+            }
+            else
+            {
+                collectionView.Filter = x =>
+                    {
+                        return ((ContactViewModel)x).Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0;
+                    };
             }
         }
 
@@ -119,22 +137,28 @@ namespace LiteApp.Bizcard.ViewModels
             ContactRepository.DeleteContacts(ids);
             Array itemsCopy = Array.CreateInstance(typeof(ContactViewModel), selectedItems.Count);
             selectedItems.CopyTo(itemsCopy, 0);
-            _canActivateItem = false; // Lock the list to reduce the times items get activated
+            _isDeleting = true; // Lock the list to reduce the times items get activated
             foreach (ContactViewModel item in itemsCopy)
             {
                 Items.Remove(item);
             }
-            _canActivateItem = true;
+            _isDeleting = false;
             ActivateItem(null);
         }
 
         public override void ActivateItem(PropertyChangedBase item)
         {
-            if (_canActivateItem)
-            {
-                NothingIsSelected = item == null;
-                base.ActivateItem(item);
-            }
+            if (_isDeleting)
+                return;
+            NothingIsSelected = item == null;
+            base.ActivateItem(item);
+        }
+
+        protected override PropertyChangedBase DetermineNextItemToActivate(IList<PropertyChangedBase> list, int lastIndex)
+        {
+            // Handles the scenario where the last item is deselected so we need to return nothing
+            // letting conductor that ActiveItem should be null
+            return null;
         }
 
         protected override void OnInitialize()

@@ -6,6 +6,7 @@
              xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:local="clr-namespace:LiteApp.Bizcard.Views"
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:controls="clr-namespace:LiteApp.Bizcard.Views.Controls"
              xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -21,15 +22,21 @@
         </Grid.ColumnDefinitions>
         <Grid Margin="10">
             <metro:ProgressRing IsActive="{Binding IsBusy, Mode=OneWay}"/>
-            <ListBox x:Name="Items" Visibility="{Binding IsBusy, Mode=OneWay, Converter={StaticResource boolToVisReverse}}" SelectionMode="Extended">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding Name, Mode=OneWay}">
+            <Grid Visibility="{Binding IsBusy, Mode=OneWay, Converter={StaticResource boolToVisReverse}}" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <controls:SearchTextBox x:Name="SearchBox" Margin="0,0,0,10" SearchMode="Instant" Search="SearchBox_Search"/>
+                <ListBox x:Name="Items" Grid.Row="1" SelectionMode="Extended">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Name, Mode=OneWay}">
                                 <TextBlock.Style>
                                     <Style TargetType="{x:Type TextBlock}">
                                         <Style.Triggers>
@@ -42,25 +49,26 @@
                                         </Style.Triggers>
                                     </Style>
                                 </TextBlock.Style>
-                            </TextBlock>
-                            <Image Source="../Resources/Images/edit-16.png" Grid.Column="1" Width="16" Height="16">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Path=State, Mode=OneWay}" Value="Edit">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding Path=State, Mode=OneWay}" Value="Display">
-                                                <Setter Property="Visibility" Value="Collapsed"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                                </TextBlock>
+                                <Image Source="../Resources/Images/edit-16.png" Grid.Column="1" Width="16" Height="16">
+                                    <Image.Style>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Path=State, Mode=OneWay}" Value="Edit">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Path=State, Mode=OneWay}" Value="Display">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Image.Style>
+                                </Image>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
         </Grid>
         <GridSplitter Grid.Column="1" Background="{StaticResource Secondary}" HorizontalAlignment="Stretch" />
         <Grid Grid.Column="2" Margin="10">

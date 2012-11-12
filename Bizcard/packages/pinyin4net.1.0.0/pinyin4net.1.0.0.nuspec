@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>pinyin4net</id>
+    <version>1.0.0</version>
+    <title>pinyin4net</title>
+    <authors>Yang Kuang</authors>
+    <owners>Yang Kuang</owners>
+    <licenseUrl>http://www.opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/YangKuang/pinyin4net</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Pinyin4net is a .net library supporting convertion between Chinese characters and Pinyin systems.</description>
+    <releaseNotes>1.0.</releaseNotes>
+    <copyright>Copyright 2012 Yang Kuang</copyright>
+    <tags>c# pinyin Chinese</tags>
+  </metadata>
+</package>

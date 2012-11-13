@@ -31,6 +31,9 @@ namespace LiteApp.Bizcard.ViewModels
         public IGlobalConfiguration Configuration { get; set; }
 
         [Import]
+        public Lazy<ManageGroupsViewModel> ManageGroupsViewModel { get; set; }
+
+        [Import]
         public Lazy<IWindowManager> WindowManager { get; set; }
 
         public IContactRepository ContactRepository
@@ -145,6 +148,11 @@ namespace LiteApp.Bizcard.ViewModels
             }
             _isDeleting = false;
             ActivateItem(null);
+        }
+
+        public void ManageGroups()
+        {
+            WindowManager.Value.ShowDialog(ManageGroupsViewModel.Value);
         }
 
         public override void ActivateItem(PropertyChangedBase item)

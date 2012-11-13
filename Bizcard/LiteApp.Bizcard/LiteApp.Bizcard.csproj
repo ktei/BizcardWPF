@@ -78,11 +78,14 @@
     </Compile>
     <Compile Include="Data\AsyncResult.cs" />
     <Compile Include="Data\IContactRepository.cs" />
+    <Compile Include="Data\IGroupRepository.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Data\IRepositoryMetadata.cs" />
     <Compile Include="Data\Mock\ContactRepository.cs" />
+    <Compile Include="Data\Mock\GroupRepository.cs" />
     <Compile Include="Data\RepositoryFactory.cs" />
     <Compile Include="Data\Sterling\BizcardDatabase.cs" />
+    <Compile Include="Data\Sterling\GroupRepository.cs" />
     <Compile Include="Data\Sterling\IdentityTrigger.cs" />
     <Compile Include="Data\Sterling\ContactRepository.cs" />
     <Compile Include="Data\Sterling\SterlingService.cs" />
@@ -99,6 +102,7 @@
     <Compile Include="Models\AddressType.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\IBaseModel.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
     <Compile Include="Models\Phone.cs" />
@@ -120,7 +124,9 @@
     <Compile Include="ViewModels\ContactsWorkspaceViewModel.cs" />
     <Compile Include="ViewModels\ContactState.cs" />
     <Compile Include="ViewModels\EditableViewModel.cs" />
+    <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\ITransaction.cs" />
+    <Compile Include="ViewModels\ManageGroupsViewModel.cs" />
     <Compile Include="ViewModels\PhoneViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\BooleanToVisiblityConverter.cs" />
@@ -138,6 +144,9 @@
     </Compile>
     <Compile Include="Views\Controls\SearchTextBox.cs" />
     <Compile Include="Views\EnumToDescriptionConverter.cs" />
+    <Compile Include="Views\ManageGroupsView.xaml.cs">
+      <DependentUpon>ManageGroupsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
@@ -197,6 +206,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ManageGroupsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -233,6 +246,12 @@
   <ItemGroup>
     <Resource Include="Resources\Images\clear.png" />
     <Resource Include="Resources\Images\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\group.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

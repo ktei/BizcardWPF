@@ -14,7 +14,7 @@ namespace LiteApp.Bizcard
 
         public DataSource DataSource
         {
-            get { return DataSource.Sterling; }
+            get { return DataSource.Mock; }
         }
 
         public bool MockDelay

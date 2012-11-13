@@ -106,6 +106,15 @@ namespace LiteApp.Bizcard.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage Groups.
+        /// </summary>
+        public static string ManageGroupsTitle {
+            get {
+                return ResourceManager.GetString("ManageGroupsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MSN.
         /// </summary>
         public static string MsnLabel {

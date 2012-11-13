@@ -132,6 +132,9 @@
   <data name="JobTitleLabel" xml:space="preserve">
     <value>Job Title</value>
   </data>
+  <data name="ManageGroupsTitle" xml:space="preserve">
+    <value>Manage Groups</value>
+  </data>
   <data name="MsnLabel" xml:space="preserve">
     <value>MSN</value>
   </data>

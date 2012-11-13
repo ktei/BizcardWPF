@@ -7,6 +7,8 @@ namespace LiteApp.Bizcard.Models
 {
     public class Contact : BaseModel<Contact>
     {
+        public int? GroupId { get; set; }
+
         public string Name { get; set; }
 
         public string Organization { get; set; }

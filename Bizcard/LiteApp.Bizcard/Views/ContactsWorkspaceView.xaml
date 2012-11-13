@@ -85,7 +85,7 @@
                     <Button cal:Message.Attach="Edit" Padding="4" Style="{DynamicResource MetroCircleButtonStyle}" Margin="0,0,10,0">
                         <Image Source="../Resources/Images/edit.png"/>
                     </Button>
-                    <Button Padding="4" Style="{DynamicResource MetroCircleButtonStyle}">
+                    <Button Padding="4" Style="{DynamicResource MetroCircleButtonStyle}" Margin="0,0,10,0">
                         <Image Source="../Resources/Images/delete.png"/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
@@ -95,7 +95,9 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>
-
+                    <Button cal:Message.Attach="ManageGroups" Padding="4" Style="{DynamicResource MetroCircleButtonStyle}">
+                        <Image Source="../Resources/Images/group.ico" />
+                    </Button>
                 </StackPanel>
             </Border>
 

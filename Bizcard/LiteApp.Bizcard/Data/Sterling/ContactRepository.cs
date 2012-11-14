@@ -23,7 +23,7 @@ namespace LiteApp.Bizcard.Data.Sterling
             return null;
         }
 
-        public IEnumerable<Models.Contact> GetContacts()
+        public IEnumerable<Contact> GetContacts()
         {
             return SterlingService.Current.Database.Query<Contact, int>().Select(x => x.LazyValue.Value);
         }

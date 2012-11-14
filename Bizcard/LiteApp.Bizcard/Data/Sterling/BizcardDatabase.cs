@@ -28,10 +28,11 @@ namespace LiteApp.Bizcard.Data.Sterling
                            // Defines Contact table
                            CreateTableDefinition<Contact, int>(x => x.Id)
                                 .WithIndex<Contact, string, int>("Name", x => x.Name)
-                                .WithIndex<Contact, int?, int>("GroupId", x => x.GroupId),
+                                .WithIndex<Contact, int, int>("GroupId", x => x.GroupId),
                            
                            // Defines Group table
                            CreateTableDefinition<Group, int>(x => x.Id)
+                                .WithIndex<Group, string, int>("Name", x => x.Name)
                        };
         }
     }

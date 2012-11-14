@@ -94,10 +94,10 @@
     <Compile Include="Framework\IWorkspace.cs" />
     <Compile Include="Framework\IWorkspaceMetadata.cs" />
     <Compile Include="GlobalConfiguration.cs" />
-    <Compile Include="Helpers\ChineseHelper.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\MefExtensions.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Helpers\WpfHelper.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\AddressType.cs" />
     <Compile Include="Models\BaseModel.cs" />

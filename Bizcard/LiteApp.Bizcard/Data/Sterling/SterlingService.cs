@@ -33,6 +33,7 @@ namespace LiteApp.Bizcard.Data.Sterling
             _engine.Activate();
             Database = _engine.SterlingDatabase.RegisterDatabase<BizcardDatabase>(_driver);
             Database.RegisterTrigger(new IdentityTrigger<Contact>(Database));
+            Database.RegisterTrigger(new IdentityTrigger<Group>(Database));
 
             Current = this;
         }

@@ -15,7 +15,7 @@ namespace LiteApp.Bizcard.ViewModels
         ContactState _state = ContactState.Display;
         BindableCollection<PhoneViewModel> _phones;
         BindableCollection<AddressViewModel> _addresses;
-        readonly Contact _contact;
+        Contact _contact;
         readonly ContactsWorkspaceViewModel _contactsWorkspace;
         static IContactRepository _contactRepository;
 
@@ -44,6 +44,11 @@ namespace LiteApp.Bizcard.ViewModels
         public int Id
         {
             get { return _contact.Id; }
+        }
+
+        public int GroupId
+        {
+            get { return _contact.GroupId; }
         }
 
         public string Name

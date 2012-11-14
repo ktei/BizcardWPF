@@ -6,6 +6,10 @@ using Caliburn.Micro;
 using LiteApp.Bizcard.Resources;
 using System.ComponentModel.Composition;
 using LiteApp.Bizcard.Data;
+using LiteApp.Bizcard.Models;
+using LiteApp.Bizcard.Data.Sterling;
+using System.Windows.Input;
+using LiteApp.Bizcard.Helpers;
 
 namespace LiteApp.Bizcard.ViewModels
 {
@@ -14,11 +18,15 @@ namespace LiteApp.Bizcard.ViewModels
     {
         IGroupRepository _groupRepository;
         BindableCollection<GroupViewModel> _groups;
+        HashSet<int> _deletedGroupIds = new HashSet<int>();
 
         public ManageGroupsViewModel()
         {
             DisplayName = ApplicationStrings.ManageGroupsTitle;
         }
+
+        public event EventHandler RequestSave;
+        public event EventHandler RequestRollback;
 
         [Import]
         public RepositoryFactory RepositoryFactory { get; set; }
@@ -41,6 +49,55 @@ namespace LiteApp.Bizcard.ViewModels
             {
                 return _groups;
             }
+        }
+
+        public ICommand RemoveCommand
+        {
+            get
+            {
+                return new RelayCommand(x =>
+                    {
+                        var item = (GroupViewModel)x;
+                        _groups.Remove(item);
+
+                        if (item.Model.Id > 0)
+                        {
+                            _deletedGroupIds.Add(item.Model.Id);
+                        }
+                    });
+            }
+        }
+
+        public void Save()
+        {
+            if (_deletedGroupIds.Count > 0)
+            {
+                GroupRepository.DeleteGroups(_deletedGroupIds);
+            }
+            foreach (var dirtyItem in _groups.Where(x => x.IsDirty))
+            {
+                GroupRepository.Save(dirtyItem.Model);
+                dirtyItem.IsDirty = false;
+            }
+            if (RequestSave != null)
+                RequestSave(this, EventArgs.Empty);
+        }
+
+        public void Add()
+        {
+            Group g = new Group();
+            g.Name = "New Group";
+            var model = new GroupViewModel(g);
+            model.IsDirty = true;
+            _groups.Add(model);
+        }
+
+        public void Rollback()
+        {
+            _deletedGroupIds.Clear();
+            LoadGroups();
+            if (RequestRollback != null)
+                RequestRollback(this, EventArgs.Empty);
         }
 
         protected override void OnInitialize()

@@ -21,12 +21,24 @@ namespace LiteApp.Bizcard.Data.Mock
             }
         }
 
-        public void DeleteGroup(int id)
+        public void DeleteGroups(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }
 
         public void Save(Models.Group group)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public IEnumerable<Tuple<string, int>> GetGroupEntries()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public bool Exists(int id)
         {
             throw new NotImplementedException();
         }

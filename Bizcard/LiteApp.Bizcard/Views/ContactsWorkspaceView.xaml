@@ -25,10 +25,13 @@
             <Grid Visibility="{Binding IsBusy, Mode=OneWay, Converter={StaticResource boolToVisReverse}}" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <controls:SearchTextBox x:Name="SearchBox" Margin="0,0,0,10" SearchMode="Instant" Search="SearchBox_Search"/>
-                <ListBox x:Name="Items" Grid.Row="1" SelectionMode="Extended">
+                <ComboBox Margin="0,0,0,10" ItemsSource="{Binding Groups, Mode=OneWay}" DisplayMemberPath="Item1" SelectedValuePath="Item2" 
+                          SelectedValue="{Binding SelectedGroupId, Mode=TwoWay}"/>
+                <controls:SearchTextBox Grid.Row="1" x:Name="SearchBox" Margin="0,0,0,10" SearchMode="Instant" Search="SearchBox_Search"/>
+                <ListBox x:Name="Items" Grid.Row="2" SelectionMode="Extended">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>

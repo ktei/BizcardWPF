@@ -20,9 +20,13 @@ namespace LiteApp.Bizcard.ViewModels
     public class ContactsWorkspaceViewModel : Conductor<PropertyChangedBase>.Collection.OneActive, IWorkspace
     {
         IContactRepository _contactRepository;
+        IGroupRepository _groupRepository;
         bool _isBusy;
         bool _nothingIsSelected = true;
         bool _isDeleting;
+        int _selectedGroupId = ShowAll;
+        string _searchText = string.Empty;
+        public static readonly int ShowAll = -1;
 
         [Import]
         public RepositoryFactory RepositoryFactory { get; set; }
@@ -31,7 +35,7 @@ namespace LiteApp.Bizcard.ViewModels
         public IGlobalConfiguration Configuration { get; set; }
 
         [Import]
-        public Lazy<ManageGroupsViewModel> ManageGroupsViewModel { get; set; }
+        public ManageGroupsViewModel ManageGroupsViewModel { get; set; }
 
         [Import]
         public Lazy<IWindowManager> WindowManager { get; set; }
@@ -48,6 +52,28 @@ namespace LiteApp.Bizcard.ViewModels
             }
         }
 
+        public IGroupRepository GroupRepository
+        {
+            get
+            {
+                if (_groupRepository == null)
+                {
+                    _groupRepository = RepositoryFactory.GetRepository<IGroupRepository>();
+                }
+                return _groupRepository;
+            }
+        }
+
+        public IEnumerable<Tuple<string, int>> Groups
+        {
+            get
+            {
+                List<Tuple<string, int>> items = new List<Tuple<string, int>>(GroupRepository.GetGroupEntries());
+                items.Insert(0, new Tuple<string,int>("All", ShowAll));
+                return items;
+            }
+        }
+
         public bool IsBusy
         {
             get { return _isBusy; }
@@ -57,6 +83,20 @@ namespace LiteApp.Bizcard.ViewModels
                 {
                     _isBusy = value;
                     NotifyOfPropertyChange(() => IsBusy);
+                }
+            }
+        }
+
+        public int SelectedGroupId
+        {
+            get { return _selectedGroupId; }
+            set
+            {
+                if (_selectedGroupId != value)
+                {
+                    _selectedGroupId = value;
+                    NotifyOfPropertyChange(() => SelectedGroupId);
+                    Search(_searchText); // Refilter the contact list
                 }
             }
         }
@@ -73,7 +113,6 @@ namespace LiteApp.Bizcard.ViewModels
                 }
             }
         }
-
 
         public void Rollback(ContactViewModel contact)
         {
@@ -98,18 +137,38 @@ namespace LiteApp.Bizcard.ViewModels
         }
 
         public void Search(string searchText)
-        {
+        {   
             var collectionView = CollectionViewSource.GetDefaultView(Items);
             if (string.IsNullOrWhiteSpace(searchText))
             {
-                collectionView.Filter = x => { return true; };
+                _searchText = string.Empty;
+                if (SelectedGroupId == ShowAll)
+                {
+                    collectionView.Filter = null;
+                }
+                else
+                {
+                    collectionView.Filter = x => ((ContactViewModel)x).GroupId == SelectedGroupId;
+                }
             }
             else
             {
-                collectionView.Filter = x =>
+                _searchText = searchText;
+                if (SelectedGroupId == ShowAll)
+                {
+                    collectionView.Filter = x =>
+                        {
+                            return ((ContactViewModel)x).Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0;
+                        };
+                }
+                else
+                {
+                    collectionView.Filter = x =>
                     {
-                        return ((ContactViewModel)x).Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0;
+                        var model = (ContactViewModel)x;
+                        return model.GroupId == SelectedGroupId && model.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0;
                     };
+                }
             }
         }
 
@@ -152,7 +211,19 @@ namespace LiteApp.Bizcard.ViewModels
 
         public void ManageGroups()
         {
-            WindowManager.Value.ShowDialog(ManageGroupsViewModel.Value);
+            var saved = WindowManager.Value.ShowDialog(ManageGroupsViewModel);
+            if (saved == true)
+            {
+                // Something is saved for groups so we need to reload the group list
+                // and also refilter the people list
+                NotifyOfPropertyChange(() => Groups);
+                if (SelectedGroupId != -1 && !GroupRepository.Exists(SelectedGroupId))
+                {
+                    // Selected group has been deleted
+                    // Force selecting All
+                    SelectedGroupId = ShowAll;
+                }
+            }
         }
 
         public override void ActivateItem(PropertyChangedBase item)

@@ -9,7 +9,9 @@ namespace LiteApp.Bizcard.Data
     public interface IGroupRepository : IRepository
     {
         IEnumerable<Group> GetGroups();
-        void DeleteGroup(int id);
+        IEnumerable<Tuple<string, int>> GetGroupEntries();
+        void DeleteGroups(IEnumerable<int> ids);
+        bool Exists(int id);
         void Save(Group group);
     }
 }

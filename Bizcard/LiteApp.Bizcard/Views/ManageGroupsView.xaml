@@ -19,7 +19,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid Margin="20">
+    <Grid Margin="20" x:Name="Layout">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -29,12 +29,12 @@
         <TextBlock Text="Add, delete, or rename groups. Deleting a group will not delete the contacts within that group." Margin="0,0,0,20" />
         <StackPanel Orientation="Horizontal" Grid.Row="1" >
             <TextBlock Text="Groups" Foreground="Gray" VerticalAlignment="Center" />
-            <Button Padding="5" Style="{DynamicResource MetroCircleButtonStyle}">
+            <Button x:Name="Add" Padding="5" Style="{DynamicResource MetroCircleButtonStyle}">
                 <Image Source="../Resources/Images/add-16.png"/>
             </Button>
         </StackPanel>
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="2">
-            <ItemsControl ItemsSource="{Binding Items, Mode=OneWay}">
+            <ItemsControl ItemsSource="{Binding Items, Mode=OneWay}" x:Name="Groups">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel/>
@@ -47,8 +47,9 @@
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Text="{Binding Name, Mode=TwoWay}" Margin="0,0,5,0"/>
-                            <Button Grid.Column="1" Style="{DynamicResource MetroCircleButtonStyle}" Padding="5">
+                            <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Margin="0,0,5,0"/>
+                            <Button Grid.Column="1" Style="{DynamicResource MetroCircleButtonStyle}" Padding="5" 
+                                    Command="{Binding DataContext.RemoveCommand, ElementName=Groups}" CommandParameter="{Binding}">
                                 <Image Source="../Resources/Images/minus-16.png" Width="16" Height="16" />
                             </Button>
                         </Grid>
@@ -58,8 +59,10 @@
         </ScrollViewer>
         <Border Grid.Row="3">
             <StackPanel Orientation="Horizontal" Margin="0,20,0,0" HorizontalAlignment="Right">
-                <Button Content="{Binding Strings.SaveLabel, Source={StaticResource AppResx}}" Foreground="White"  Background="{StaticResource Main}" Width="85" />
-                <Button Content="{Binding Strings.CancelLabel, Source={StaticResource AppResx}}" Foreground="White" Background="{StaticResource Main}" Width="85" />
+                <Button x:Name="Save" Content="{Binding Strings.SaveLabel, Source={StaticResource AppResx}}" Click="Save_Click"
+                        Foreground="White"  Background="{StaticResource Main}" Width="85" />
+                <Button x:Name="Rollback" Content="{Binding Strings.CancelLabel, Source={StaticResource AppResx}}" 
+                        Foreground="White" Background="{StaticResource Main}" Width="85" />
             </StackPanel>
         </Border>
     </Grid>

@@ -18,6 +18,12 @@ namespace LiteApp.Bizcard
         CompositionContainer _container;
         SterlingService _sterlingService;
 
+        public AppBootstrapper()
+        {
+            _sterlingService = new SterlingService();
+            _sterlingService.StartService();
+        }
+
         #region Properties
 
         public CompositionContainer Container
@@ -39,8 +45,7 @@ namespace LiteApp.Bizcard
             base.OnStartup(sender, e);
             //System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("zh");
             //System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh");
-            _sterlingService = new SterlingService();
-            _sterlingService.StartService();
+
         }
 
         protected override void OnExit(object sender, EventArgs e)

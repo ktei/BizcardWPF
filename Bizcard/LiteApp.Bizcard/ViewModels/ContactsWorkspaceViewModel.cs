@@ -224,6 +224,13 @@ namespace LiteApp.Bizcard.ViewModels
                     // Force selecting All
                     SelectedGroupId = ShowAll;
                 }
+
+                // Update active contact's groups view
+                var contactViewModel = ActiveItem as ContactViewModel;
+                if (contactViewModel != null)
+                {
+                    contactViewModel.NotifyOfPropertyChange("Groups");
+                }
             }
         }
 

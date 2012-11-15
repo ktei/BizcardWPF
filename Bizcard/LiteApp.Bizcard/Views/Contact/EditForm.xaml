@@ -109,6 +109,15 @@
                 <Rectangle HorizontalAlignment="Stretch" Fill="{StaticResource Secondary}" Height="1" Margin="0,5,0,0"/>
             </StackPanel>
         </TabItem>
+        <TabItem Header="Group">
+            <ItemsControl ItemsSource="{Binding Groups, Mode=OneWay}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox Content="{Binding Name, Mode=OneWay}" IsChecked="{Binding IsChecked, Mode=TwoWay}" Margin="10"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </TabItem>
         <TabItem Header="{Binding Strings.OtherInfoHeader, Source={StaticResource AppResx}}">
             <StackPanel>
                 <HeaderedContentControl Focusable="False">

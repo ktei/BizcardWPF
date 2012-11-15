@@ -124,6 +124,7 @@
     <Compile Include="ViewModels\ContactsWorkspaceViewModel.cs" />
     <Compile Include="ViewModels\ContactState.cs" />
     <Compile Include="ViewModels\EditableViewModel.cs" />
+    <Compile Include="ViewModels\GroupCheckboxViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\ITransaction.cs" />
     <Compile Include="ViewModels\ManageGroupsViewModel.cs" />

@@ -15,9 +15,11 @@ namespace LiteApp.Bizcard.ViewModels
         ContactState _state = ContactState.Display;
         BindableCollection<PhoneViewModel> _phones;
         BindableCollection<AddressViewModel> _addresses;
+        List<GroupCheckboxViewModel> _groups;
         Contact _contact;
         readonly ContactsWorkspaceViewModel _contactsWorkspace;
         static IContactRepository _contactRepository;
+        static IGroupRepository _groupRepository;
 
         public ContactViewModel(Contact model, ContactsWorkspaceViewModel workspace)
         {
@@ -40,6 +42,19 @@ namespace LiteApp.Bizcard.ViewModels
                 return _contactRepository;
             }
         }
+
+        public IGroupRepository GroupRepository
+        {
+            get
+            {
+                if (_groupRepository == null)
+                {
+                    this.SatisfyImports();
+                    _groupRepository = RepositoryFactory.GetRepository<IGroupRepository>();
+                }
+                return _groupRepository;
+            }
+        }
         
         public int Id
         {
@@ -49,6 +64,15 @@ namespace LiteApp.Bizcard.ViewModels
         public List<int> GroupIds
         {
             get { return _contact.GroupIds ?? new List<int>(0); }
+        }
+
+        public List<GroupCheckboxViewModel> Groups
+        {
+            get
+            {
+                LoadGroups();
+                return _groups;
+            }
         }
 
         public string Name
@@ -309,6 +333,28 @@ namespace LiteApp.Bizcard.ViewModels
         {
             _contact.Phones = new List<Phone>(_phones.Select(x => x.Model));
             _contact.Addresses = new List<Address>(_addresses.Select(x => x.Model));
+        }
+
+        void LoadGroups()
+        {
+            List<int> checkedGroupIds = new List<int>();
+            if (_groups != null)
+            {
+                checkedGroupIds.AddRange(_groups.Where(x => x.IsChecked).Select(x => x.GroupId));
+            }
+            else
+            {
+                checkedGroupIds.AddRange(GroupIds);
+            }
+            _groups = new List<GroupCheckboxViewModel>(GroupRepository.GetGroupEntries().Select(x => new GroupCheckboxViewModel(x.Item1, x.Item2)));
+            foreach (var id in checkedGroupIds)
+            {
+                var model = _groups.FirstOrDefault(x => x.GroupId == id);
+                if (model != null)
+                {
+                    model.IsChecked = true;
+                }
+            }
         }
     }
 }

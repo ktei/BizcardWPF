@@ -119,7 +119,11 @@
             <ItemsControl ItemsSource="{Binding Groups, Mode=OneWay}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <CheckBox Content="{Binding Name, Mode=OneWay}" IsChecked="{Binding IsChecked, Mode=TwoWay}" Margin="10"/>
+                        <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay}" Margin="10" Style="{StaticResource MetroCheckBox}">
+                            <CheckBox.Content>
+                                <TextBlock Text="{Binding Name, Mode=OneWay}" FontSize="15" FontWeight="Thin"/>
+                            </CheckBox.Content>
+                        </CheckBox>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

@@ -24,5 +24,17 @@ namespace LiteApp.Bizcard.Views.Contact
         {
             InitializeComponent();
         }
+
+        private void PrimaryTabItem_Loaded(object sender, RoutedEventArgs e)
+        {
+            NameTextBox.Focus();
+            NameTextBox.SelectAll();
+        }
+
+        private void OtherTabItem_Loaded(object sender, RoutedEventArgs e)
+        {
+            SkypeTextBox.Focus();
+            SkypeTextBox.SelectAll();
+        }
     }
 }

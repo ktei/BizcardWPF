@@ -369,7 +369,7 @@ namespace LiteApp.Bizcard.ViewModels
                 var model = _groups.FirstOrDefault(x => x.GroupId == id);
                 if (model != null)
                 {
-                    model.IsChecked = true;
+                    model.Check();
                 }
             }
         }

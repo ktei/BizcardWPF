@@ -22,6 +22,11 @@ namespace LiteApp.Bizcard.ViewModels
 
         public int GroupId { get; private set; }
 
+        public void Check()
+        {
+            _isChecked = true;
+        }
+
         public bool IsChecked
         {
             get { return _isChecked; }

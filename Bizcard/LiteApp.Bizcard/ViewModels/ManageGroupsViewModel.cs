@@ -86,10 +86,9 @@ namespace LiteApp.Bizcard.ViewModels
         public void Add()
         {
             Group g = new Group();
-            g.Name = "New Group";
             var model = new GroupViewModel(g);
             model.IsDirty = true;
-            _groups.Add(model);
+            _groups.Insert(0, model);
         }
 
         public void Rollback()

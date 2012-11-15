@@ -11,6 +11,8 @@
 
     <UserControl.Resources>
         <views:ContactInfoCategoryToTabSelectionConverter x:Key="tabConv"/>
+        <views:BooleanToVisiblityConverter x:Key="boolToVis"/>
+        <views:BooleanToVisiblityConverter x:Key="reverseBoolToVis" Reverse="True"/>
     </UserControl.Resources>
     <TabControl>
         <TabItem Header="{Binding Strings.PrimaryInfoHeader, Source={StaticResource AppResx}}" Loaded="PrimaryTabItem_Loaded"
@@ -116,17 +118,21 @@
         </TabItem>
         <TabItem Header="Group"
                  IsSelected="{Binding SelectedInfoCategory, Mode=TwoWay, Converter={StaticResource tabConv}, ConverterParameter=Group}">
-            <ItemsControl ItemsSource="{Binding Groups, Mode=OneWay}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay}" Margin="10" Style="{StaticResource MetroCheckBox}">
-                            <CheckBox.Content>
-                                <TextBlock Text="{Binding Name, Mode=OneWay}" FontSize="15" FontWeight="Thin"/>
-                            </CheckBox.Content>
-                        </CheckBox>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            <Grid>
+                <ItemsControl ItemsSource="{Binding Groups, Mode=OneWay}" Visibility="{Binding HasGroups, Mode=OneWay, Converter={StaticResource boolToVis}}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay}" Margin="10" Style="{StaticResource MetroCheckBox}">
+                                <CheckBox.Content>
+                                    <TextBlock Text="{Binding Name, Mode=OneWay}" FontSize="15" FontWeight="Thin"/>
+                                </CheckBox.Content>
+                            </CheckBox>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <TextBlock Text="{Binding Strings.NoGroupsFound, Source={StaticResource AppResx}}"
+                           Visibility="{Binding HasGroups, Mode=OneWay, Converter={StaticResource reverseBoolToVis}}"/>
+            </Grid>
         </TabItem>
         <TabItem Header="{Binding Strings.OtherInfoHeader, Source={StaticResource AppResx}}" Loaded="OtherTabItem_Loaded"
                  IsSelected="{Binding SelectedInfoCategory, Mode=TwoWay, Converter={StaticResource tabConv}, ConverterParameter=Other}">

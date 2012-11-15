@@ -21,6 +21,7 @@ namespace LiteApp.Bizcard.ViewModels
         static IContactRepository _contactRepository;
         static IGroupRepository _groupRepository;
         ContactInfoCategory _selectedInfoCategory = ContactInfoCategory.Primary;
+        bool _hasGroups;
 
         public ContactViewModel(Contact model, ContactsWorkspaceViewModel workspace)
         {
@@ -73,6 +74,19 @@ namespace LiteApp.Bizcard.ViewModels
             {
                 LoadGroups();
                 return _groups;
+            }
+        }
+
+        public bool HasGroups
+        {
+            get { return _hasGroups; }
+            private set
+            {
+                if (_hasGroups != value)
+                {
+                    _hasGroups = value;
+                    NotifyOfPropertyChange(() => HasGroups);
+                }
             }
         }
 
@@ -372,6 +386,7 @@ namespace LiteApp.Bizcard.ViewModels
                     model.Check();
                 }
             }
+            HasGroups = _groups.Count > 0;
         }
     }
 }

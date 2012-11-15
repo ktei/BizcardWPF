@@ -14,6 +14,7 @@ using MahApps.Metro.Controls;
 using Caliburn.Micro;
 using System.ComponentModel.Composition;
 using LiteApp.Bizcard.Helpers;
+using MahApps.Metro;
 
 namespace LiteApp.Bizcard.Views
 {

@@ -12,6 +12,7 @@ using System.Threading;
 using System.Collections;
 using LiteApp.Bizcard.Models;
 using System.Windows.Data;
+using LiteApp.Bizcard.Resources;
 
 namespace LiteApp.Bizcard.ViewModels
 {
@@ -69,7 +70,7 @@ namespace LiteApp.Bizcard.ViewModels
             get
             {
                 List<Tuple<string, int>> items = new List<Tuple<string, int>>(GroupRepository.GetGroupEntries());
-                items.Insert(0, new Tuple<string,int>("All", ShowAll));
+                items.Insert(0, new Tuple<string,int>(ApplicationStrings.GroupAll, ShowAll));
                 return items;
             }
         }
@@ -175,7 +176,7 @@ namespace LiteApp.Bizcard.ViewModels
 
         public void Add()
         {
-            Contact newContact = new Contact() { Name = "New contact" };
+            Contact newContact = new Contact() { Name = ApplicationStrings.DefaultContactName };
             ContactViewModel model = new ContactViewModel(newContact, this);
             model.State = ContactState.Edit;
             model.IsDirty = true;

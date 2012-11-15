@@ -88,6 +88,15 @@ namespace LiteApp.Bizcard.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New contact.
+        /// </summary>
+        public static string DefaultContactName {
+            get {
+                return ResourceManager.GetString("DefaultContactName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string EmailLabel {
@@ -97,11 +106,38 @@ namespace LiteApp.Bizcard.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string GroupAll {
+            get {
+                return ResourceManager.GetString("GroupAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Groups.
+        /// </summary>
+        public static string GroupsLabel {
+            get {
+                return ResourceManager.GetString("GroupsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Job Title.
         /// </summary>
         public static string JobTitleLabel {
             get {
                 return ResourceManager.GetString("JobTitleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add, delete, or rename groups. Deleting a group will not delete the contacts within that group..
+        /// </summary>
+        public static string ManageGroupsIntro {
+            get {
+                return ResourceManager.GetString("ManageGroupsIntro", resourceCulture);
             }
         }
         
@@ -133,11 +169,38 @@ namespace LiteApp.Bizcard.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose a contact to view..
+        /// </summary>
+        public static string NoContactLabel {
+            get {
+                return ResourceManager.GetString("NoContactLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No groups can be found..
+        /// </summary>
+        public static string NoGroupsFound {
+            get {
+                return ResourceManager.GetString("NoGroupsFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Notes.
         /// </summary>
         public static string NotesLabel {
             get {
                 return ResourceManager.GetString("NotesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string OkayLabel {
+            get {
+                return ResourceManager.GetString("OkayLabel", resourceCulture);
             }
         }
         

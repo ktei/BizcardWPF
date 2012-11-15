@@ -107,7 +107,8 @@
 
             <ContentControl Grid.Row="1" cal:View.Context="{Binding ActiveItem.State, Mode=TwoWay}"
                             cal:View.Model="{Binding ActiveItem}" Visibility="{Binding NothingIsSelected, Mode=OneWay, Converter={StaticResource boolToVisReverse}}" />
-            <TextBlock Grid.Row="1" Text="Select a contact to view" Visibility="{Binding NothingIsSelected, Mode=OneWay, Converter={StaticResource boolToVis}}"/>
+            <TextBlock Grid.Row="1" Text="{Binding Strings.NoContactLabel, Source={StaticResource AppResx}}" Margin="10"
+                       Visibility="{Binding NothingIsSelected, Mode=OneWay, Converter={StaticResource boolToVis}}"/>
         </Grid>
     </Grid>
 </UserControl>

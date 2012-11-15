@@ -46,9 +46,9 @@ namespace LiteApp.Bizcard.ViewModels
             get { return _contact.Id; }
         }
 
-        public int GroupId
+        public List<int> GroupIds
         {
-            get { return _contact.GroupId; }
+            get { return _contact.GroupIds ?? new List<int>(0); }
         }
 
         public string Name

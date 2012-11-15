@@ -148,7 +148,7 @@ namespace LiteApp.Bizcard.ViewModels
                 }
                 else
                 {
-                    collectionView.Filter = x => ((ContactViewModel)x).GroupId == SelectedGroupId;
+                    collectionView.Filter = x => ((ContactViewModel)x).GroupIds.Any(gid => gid == SelectedGroupId);
                 }
             }
             else
@@ -166,7 +166,8 @@ namespace LiteApp.Bizcard.ViewModels
                     collectionView.Filter = x =>
                     {
                         var model = (ContactViewModel)x;
-                        return model.GroupId == SelectedGroupId && model.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0;
+                        return model.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 &&
+                            model.GroupIds.Any(gid => gid == SelectedGroupId);
                     };
                 }
             }

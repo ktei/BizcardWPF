@@ -35,7 +35,7 @@ namespace LiteApp.Bizcard.Data.Sterling
                 {
                     // Change and save his GroupdId to null to remove him from this group
                     var people = item.LazyValue.Value;
-                    people.GroupId = 0;
+                    people.GroupIds = null;
                     SterlingService.Current.Database.Save(people);
                 }
 

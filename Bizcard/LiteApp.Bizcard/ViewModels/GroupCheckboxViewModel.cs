@@ -9,11 +9,13 @@ namespace LiteApp.Bizcard.ViewModels
     public class GroupCheckboxViewModel : PropertyChangedBase
     {
         bool _isChecked;
+        readonly ContactViewModel _contact;
 
-        public GroupCheckboxViewModel(string name, int groupId)
+        public GroupCheckboxViewModel(string name, int groupId, ContactViewModel contact)
         {
             Name = name;
             GroupId = groupId;
+            _contact = contact;
         }
 
         public string Name { get; private set; }
@@ -28,6 +30,7 @@ namespace LiteApp.Bizcard.ViewModels
                 if (_isChecked != value)
                 {
                     _isChecked = value;
+                    _contact.IsDirty = true;
                     NotifyOfPropertyChange(() => IsChecked);
                 }
             }

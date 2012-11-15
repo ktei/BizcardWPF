@@ -4,12 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:cal="http://www.caliburnproject.org"
+             xmlns:views="clr-namespace:LiteApp.Bizcard.Views"
              UseLayoutRounding="True"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
+    <UserControl.Resources>
+        <views:ContactInfoCategoryToTabSelectionConverter x:Key="tabConv"/>
+    </UserControl.Resources>
     <TabControl>
-        <TabItem Header="{Binding Strings.PrimaryInfoHeader, Source={StaticResource AppResx}}">
+        <TabItem Header="{Binding Strings.PrimaryInfoHeader, Source={StaticResource AppResx}}" 
+                 IsSelected="{Binding SelectedInfoCategory, Mode=TwoWay, Converter={StaticResource tabConv}, ConverterParameter=Primary}">
             <StackPanel>
                 <HeaderedContentControl Focusable="False">
                     <HeaderedContentControl.Header>
@@ -109,7 +114,8 @@
                 <Rectangle HorizontalAlignment="Stretch" Fill="{StaticResource Secondary}" Height="1" Margin="0,5,0,0"/>
             </StackPanel>
         </TabItem>
-        <TabItem Header="Group">
+        <TabItem Header="Group"
+                 IsSelected="{Binding SelectedInfoCategory, Mode=TwoWay, Converter={StaticResource tabConv}, ConverterParameter=Group}">
             <ItemsControl ItemsSource="{Binding Groups, Mode=OneWay}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -118,7 +124,8 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </TabItem>
-        <TabItem Header="{Binding Strings.OtherInfoHeader, Source={StaticResource AppResx}}">
+        <TabItem Header="{Binding Strings.OtherInfoHeader, Source={StaticResource AppResx}}"
+                 IsSelected="{Binding SelectedInfoCategory, Mode=TwoWay, Converter={StaticResource tabConv}, ConverterParameter=Other}">
             <StackPanel>
                 <HeaderedContentControl Focusable="False">
                     <HeaderedContentControl.Header>

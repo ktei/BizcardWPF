@@ -20,6 +20,7 @@ namespace LiteApp.Bizcard.ViewModels
         readonly ContactsWorkspaceViewModel _contactsWorkspace;
         static IContactRepository _contactRepository;
         static IGroupRepository _groupRepository;
+        ContactInfoCategory _selectedInfoCategory = ContactInfoCategory.Primary;
 
         public ContactViewModel(Contact model, ContactsWorkspaceViewModel workspace)
         {
@@ -72,6 +73,19 @@ namespace LiteApp.Bizcard.ViewModels
             {
                 LoadGroups();
                 return _groups;
+            }
+        }
+
+        public ContactInfoCategory SelectedInfoCategory
+        {
+            get { return _selectedInfoCategory; }
+            set
+            {
+                if (_selectedInfoCategory != value)
+                {
+                    _selectedInfoCategory = value;
+                    NotifyOfPropertyChange(() => SelectedInfoCategory);
+                }
             }
         }
 
@@ -327,12 +341,14 @@ namespace LiteApp.Bizcard.ViewModels
                 IsDirty = false;
             }
             State = ContactState.Display;
+            SelectedInfoCategory = ContactInfoCategory.Primary;
         }
 
         void PrepareSave()
         {
             _contact.Phones = new List<Phone>(_phones.Select(x => x.Model));
             _contact.Addresses = new List<Address>(_addresses.Select(x => x.Model));
+            _contact.GroupIds = new List<int>(_groups.Where(x => x.IsChecked).Select(x => x.GroupId));
         }
 
         void LoadGroups()
@@ -346,7 +362,8 @@ namespace LiteApp.Bizcard.ViewModels
             {
                 checkedGroupIds.AddRange(GroupIds);
             }
-            _groups = new List<GroupCheckboxViewModel>(GroupRepository.GetGroupEntries().Select(x => new GroupCheckboxViewModel(x.Item1, x.Item2)));
+            _groups = new List<GroupCheckboxViewModel>(GroupRepository.GetGroupEntries()
+                .Select(x => new GroupCheckboxViewModel(x.Item1, x.Item2, this)));
             foreach (var id in checkedGroupIds)
             {
                 var model = _groups.FirstOrDefault(x => x.GroupId == id);

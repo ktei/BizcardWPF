@@ -120,6 +120,7 @@
       <DependentUpon>EnumStrings.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AddressViewModel.cs" />
+    <Compile Include="ViewModels\ContactInfoCategory.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\ContactsWorkspaceViewModel.cs" />
     <Compile Include="ViewModels\ContactState.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="ViewModels\PhoneViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\BooleanToVisiblityConverter.cs" />
+    <Compile Include="Views\ContactInfoCategoryToTabSelectionConverter.cs" />
     <Compile Include="Views\ContactsWorkspaceView.xaml.cs">
       <DependentUpon>ContactsWorkspaceView.xaml</DependentUpon>
     </Compile>

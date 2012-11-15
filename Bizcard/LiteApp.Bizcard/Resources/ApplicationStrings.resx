@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddContactTip" xml:space="preserve">
+    <value>Add contact</value>
+  </data>
   <data name="AddressLabel" xml:space="preserve">
     <value>Address</value>
   </data>
@@ -128,6 +131,12 @@
   </data>
   <data name="DefaultContactName" xml:space="preserve">
     <value>New contact</value>
+  </data>
+  <data name="DeleteContactTip" xml:space="preserve">
+    <value>Delete contacts</value>
+  </data>
+  <data name="EditContactTip" xml:space="preserve">
+    <value>Edit contact</value>
   </data>
   <data name="EmailLabel" xml:space="preserve">
     <value>Email</value>
@@ -143,6 +152,9 @@
   </data>
   <data name="ManageGroupsIntro" xml:space="preserve">
     <value>Add, delete, or rename groups. Deleting a group will not delete the contacts within that group.</value>
+  </data>
+  <data name="ManageGroupsTip" xml:space="preserve">
+    <value>Manage groups</value>
   </data>
   <data name="ManageGroupsTitle" xml:space="preserve">
     <value>Manage Groups</value>

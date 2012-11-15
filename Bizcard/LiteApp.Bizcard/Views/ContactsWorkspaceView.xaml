@@ -82,13 +82,16 @@
 
             <Border Margin="5,0" Padding="0,5">
                 <StackPanel Orientation="Horizontal">
-                    <Button cal:Message.Attach="Add" Padding="4" Style="{DynamicResource MetroCircleButtonStyle}" Margin="0,0,10,0">
+                    <Button cal:Message.Attach="Add" Padding="4" Style="{DynamicResource MetroCircleButtonStyle}" Margin="0,0,10,0" 
+                            ToolTip="{Binding Strings.AddContactTip, Source={StaticResource AppResx}}">
                         <Image Source="../Resources/Images/add.png"/>
                     </Button>
-                    <Button cal:Message.Attach="Edit" Padding="4" Style="{DynamicResource MetroCircleButtonStyle}" Margin="0,0,10,0">
+                    <Button cal:Message.Attach="Edit" Padding="4" Style="{DynamicResource MetroCircleButtonStyle}" Margin="0,0,10,0"
+                            ToolTip="{Binding Strings.EditContactTip, Source={StaticResource AppResx}}">
                         <Image Source="../Resources/Images/edit.png"/>
                     </Button>
-                    <Button Padding="4" Style="{DynamicResource MetroCircleButtonStyle}" Margin="0,0,10,0">
+                    <Button Padding="4" Style="{DynamicResource MetroCircleButtonStyle}" Margin="0,0,10,0"
+                            ToolTip="{Binding Strings.DeleteContactTip, Source={StaticResource AppResx}}">
                         <Image Source="../Resources/Images/delete.png"/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
@@ -98,7 +101,8 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>
-                    <Button cal:Message.Attach="ManageGroups" Padding="4" Style="{DynamicResource MetroCircleButtonStyle}">
+                    <Button cal:Message.Attach="ManageGroups" Padding="4" Style="{DynamicResource MetroCircleButtonStyle}"
+                            ToolTip="{Binding Strings.ManageGroupsTip, Source={StaticResource AppResx}}">
                         <Image Source="../Resources/Images/group.ico" />
                     </Button>
                 </StackPanel>

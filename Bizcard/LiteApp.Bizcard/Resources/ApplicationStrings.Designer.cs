@@ -61,6 +61,15 @@ namespace LiteApp.Bizcard.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add contact.
+        /// </summary>
+        public static string AddContactTip {
+            get {
+                return ResourceManager.GetString("AddContactTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         public static string AddressLabel {
@@ -93,6 +102,24 @@ namespace LiteApp.Bizcard.Resources {
         public static string DefaultContactName {
             get {
                 return ResourceManager.GetString("DefaultContactName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete contacts.
+        /// </summary>
+        public static string DeleteContactTip {
+            get {
+                return ResourceManager.GetString("DeleteContactTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit contact.
+        /// </summary>
+        public static string EditContactTip {
+            get {
+                return ResourceManager.GetString("EditContactTip", resourceCulture);
             }
         }
         
@@ -138,6 +165,15 @@ namespace LiteApp.Bizcard.Resources {
         public static string ManageGroupsIntro {
             get {
                 return ResourceManager.GetString("ManageGroupsIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage groups.
+        /// </summary>
+        public static string ManageGroupsTip {
+            get {
+                return ResourceManager.GetString("ManageGroupsTip", resourceCulture);
             }
         }
         

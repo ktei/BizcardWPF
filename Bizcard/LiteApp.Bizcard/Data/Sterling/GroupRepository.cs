@@ -41,7 +41,6 @@ namespace LiteApp.Bizcard.Data.Sterling
 
         public void Save(Group group)
         {
-            bool isNew = group.Id == 0;
             SterlingService.Current.Database.Save(group);
             SterlingService.Current.Database.Flush();
         }

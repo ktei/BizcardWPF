@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:local="clr-namespace:LiteApp.Bizcard.Views"
              xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d" 
              WindowStartupLocation="CenterOwner" Width="600" Height="400" ResizeMode="NoResize">
@@ -47,8 +48,13 @@
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Margin="0,0,5,0" 
-                                     x:Name="GroupTextBox" VerticalContentAlignment="Center"/>
+                            <TextBox Margin="0,0,5,0" Validation.ErrorTemplate="{x:Null}"
+                                     x:Name="GroupTextBox" VerticalContentAlignment="Center">
+                                <TextBox.Text>
+                                    <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="Explicit">
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                             <Button Grid.Column="1" Style="{DynamicResource MetroCircleButtonStyle}" Padding="5" 
                                     Command="{Binding DataContext.RemoveCommand, ElementName=Groups}" CommandParameter="{Binding}">
                                 <Image Source="../Resources/Images/minus-16.png" Width="16" Height="16" />
@@ -62,7 +68,7 @@
             <StackPanel Orientation="Horizontal" Margin="0,20,0,0" HorizontalAlignment="Right">
                 <Button x:Name="Save" Content="{Binding Strings.OkayLabel, Source={StaticResource AppResx}}" Click="Save_Click"
                         Foreground="White"  Background="{StaticResource Main}" Width="85" />
-                <Button x:Name="Rollback" Content="{Binding Strings.CancelLabel, Source={StaticResource AppResx}}" 
+                <Button x:Name="Rollback" Content="{Binding Strings.CancelLabel, Source={StaticResource AppResx}}" Click="Rollback_Click"
                         Foreground="White" Background="{StaticResource Main}" Width="85" />
             </StackPanel>
         </Border>

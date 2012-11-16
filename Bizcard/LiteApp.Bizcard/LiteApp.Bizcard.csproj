@@ -119,6 +119,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EnumStrings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\ValidationErrorStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationErrorStrings.resx</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AddressViewModel.cs" />
     <Compile Include="ViewModels\ContactInfoCategory.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
@@ -183,6 +188,10 @@
     <EmbeddedResource Include="Resources\EnumStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EnumStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ValidationErrorStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationErrorStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />

@@ -10,6 +10,7 @@ using LiteApp.Bizcard.Models;
 using LiteApp.Bizcard.Data.Sterling;
 using System.Windows.Input;
 using LiteApp.Bizcard.Helpers;
+using System.ComponentModel;
 
 namespace LiteApp.Bizcard.ViewModels
 {
@@ -25,9 +26,6 @@ namespace LiteApp.Bizcard.ViewModels
             DisplayName = ApplicationStrings.ManageGroupsTitle;
         }
 
-        public event EventHandler RequestSave;
-        public event EventHandler RequestRollback;
-
         [Import]
         public RepositoryFactory RepositoryFactory { get; set; }
 
@@ -42,6 +40,8 @@ namespace LiteApp.Bizcard.ViewModels
                 return _groupRepository;
             }
         }
+
+        public bool HasValidationErrors { get; set; }
 
         public IEnumerable<GroupViewModel> Items
         {
@@ -70,6 +70,9 @@ namespace LiteApp.Bizcard.ViewModels
 
         public void Save()
         {
+            if (HasValidationErrors)
+                return;
+
             if (_deletedGroupIds.Count > 0)
             {
                 GroupRepository.DeleteGroups(_deletedGroupIds);
@@ -79,8 +82,6 @@ namespace LiteApp.Bizcard.ViewModels
                 GroupRepository.Save(dirtyItem.Model);
                 dirtyItem.IsDirty = false;
             }
-            if (RequestSave != null)
-                RequestSave(this, EventArgs.Empty);
         }
 
         public void Add()
@@ -95,8 +96,6 @@ namespace LiteApp.Bizcard.ViewModels
         {
             _deletedGroupIds.Clear();
             LoadGroups();
-            if (RequestRollback != null)
-                RequestRollback(this, EventArgs.Empty);
         }
 
         protected override void OnInitialize()

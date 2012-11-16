@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using LiteApp.Bizcard.Helpers;
 using LiteApp.Bizcard.ViewModels;
+using LiteApp.Bizcard.Resources;
 
 namespace LiteApp.Bizcard.Views
 {
@@ -25,53 +26,40 @@ namespace LiteApp.Bizcard.Views
         public ManageGroupsView()
         {
             InitializeComponent();
-            this.Loaded += ManageGroupsView_Loaded;
-            this.Unloaded += ManageGroupsView_Unloaded;
-        }
-
-
-        void ManageGroupsView_Loaded(object sender, RoutedEventArgs e)
-        {
-            var model = this.DataContext as ManageGroupsViewModel;
-            if (model != null)
-            {
-                model.RequestSave += model_RequestSave;
-                model.RequestRollback += model_RequestRollback;
-            }
-        }
-
-        void model_RequestRollback(object sender, EventArgs e)
-        {
-            this.DialogResult = false;
-        }
-
-        void model_RequestSave(object sender, EventArgs e)
-        {
-            this.DialogResult = true;
-        }
-
-        void ManageGroupsView_Unloaded(object sender, RoutedEventArgs e)
-        {
-            var model = this.DataContext as ManageGroupsViewModel;
-            if (model != null)
-            {
-                model.RequestSave -= model_RequestSave;
-                model.RequestRollback -= model_RequestRollback;
-            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            string validationError = string.Empty;
             foreach (var item in Groups.Items)
             {
                 ContentPresenter cp = Groups.ItemContainerGenerator.ContainerFromItem(item) as ContentPresenter;
                 TextBox txtBox = cp.FindVisualChild<TextBox>();
                 if (txtBox != null)
                 {
-                    txtBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                    if (string.IsNullOrWhiteSpace(txtBox.Text))
+                    {
+                        validationError = ValidationErrorStrings.GroupNameRequired;
+                        break;
+                    }
+                    var binding = txtBox.GetBindingExpression(TextBox.TextProperty);
+                    binding.UpdateSource();
                 }
+            }
+            (this.DataContext as ManageGroupsViewModel).HasValidationErrors = validationError.Length > 0;
+            if (validationError.Length == 0)
+            {
+                this.DialogResult = true;
+            }
+            else
+            {
+                MessageBox.Show(validationError, "Manage Groups", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
+        private void Rollback_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
+        }
     }
 }

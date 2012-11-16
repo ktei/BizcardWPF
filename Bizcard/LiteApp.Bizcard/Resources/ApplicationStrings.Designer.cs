@@ -322,6 +322,15 @@ namespace LiteApp.Bizcard.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Saving contact.
+        /// </summary>
+        public static string SavingContactHeader {
+            get {
+                return ResourceManager.GetString("SavingContactHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Skype.
         /// </summary>
         public static string SkypeLabel {

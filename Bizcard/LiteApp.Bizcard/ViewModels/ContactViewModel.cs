@@ -7,6 +7,7 @@ using System.ComponentModel.Composition;
 using LiteApp.Bizcard.Data;
 using System.Linq;
 using System;
+using LiteApp.Bizcard.Resources;
 
 namespace LiteApp.Bizcard.ViewModels
 {
@@ -31,6 +32,9 @@ namespace LiteApp.Bizcard.ViewModels
 
         [Import]
         public RepositoryFactory RepositoryFactory { get; set; }
+
+        [Import]
+        public IWindowManager WindowManager { get; set; }
 
         public IContactRepository ContactRepository
         {
@@ -350,12 +354,28 @@ namespace LiteApp.Bizcard.ViewModels
         {
             if (IsDirty)
             {
+                var validationResult = Validate();
+                if (validationResult.Length > 0)
+                {
+                    this.SatisfyImports();
+                    WindowManager.ShowDialog(new MessageViewModel(ApplicationStrings.SavingContactHeader, validationResult));
+                    return;
+                }
                 PrepareSave();
                 ContactRepository.Save(_contact);
                 IsDirty = false;
             }
             State = ContactState.Display;
             SelectedInfoCategory = ContactInfoCategory.Primary;
+        }
+
+        string Validate()
+        {
+            if (string.IsNullOrWhiteSpace(_contact.Name))
+            {
+                return ValidationErrorStrings.ContactNameRequired;
+            }
+            return string.Empty;
         }
 
         void PrepareSave()

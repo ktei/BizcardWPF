@@ -61,6 +61,15 @@ namespace LiteApp.Bizcard.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact must have a name..
+        /// </summary>
+        public static string ContactNameRequired {
+            get {
+                return ResourceManager.GetString("ContactNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Group name cannot be empty..
         /// </summary>
         public static string GroupNameRequired {

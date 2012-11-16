@@ -207,6 +207,9 @@
   <data name="SavingContactHeader" xml:space="preserve">
     <value>Saving contact</value>
   </data>
+  <data name="SettingsLabel" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="SkypeLabel" xml:space="preserve">
     <value>Skype</value>
   </data>

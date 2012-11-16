@@ -23,6 +23,14 @@ namespace LiteApp.Bizcard.ViewModels
         [ImportMany]
         public IEnumerable<Lazy<IWorkspace, IWorkspaceMetadata>> Workspaces { get; set; }
 
+        [Import]
+        public Lazy<SettingsViewModel> Settings { get; set; }
+
+        [Import]
+        public Lazy<IWindowManager> WindowManager { get; set; }
+
+        public Action<ThemeViewModel> ThemeSelected { get; set; }
+
         #endregion // Properties
 
         #region Public Methods
@@ -34,6 +42,11 @@ namespace LiteApp.Bizcard.ViewModels
             {
                 ActivateItem(workspace.Value);
             }
+        }
+
+        public void ChangeSettings()
+        {
+            WindowManager.Value.ShowDialog(Settings.Value);
         }
 
         #endregion // Public Methods

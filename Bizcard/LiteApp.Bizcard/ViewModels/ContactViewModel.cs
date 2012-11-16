@@ -34,7 +34,7 @@ namespace LiteApp.Bizcard.ViewModels
         public RepositoryFactory RepositoryFactory { get; set; }
 
         [Import]
-        public IWindowManager WindowManager { get; set; }
+        public Lazy<IWindowManager> WindowManager { get; set; }
 
         public IContactRepository ContactRepository
         {
@@ -358,7 +358,7 @@ namespace LiteApp.Bizcard.ViewModels
                 if (validationResult.Length > 0)
                 {
                     this.SatisfyImports();
-                    WindowManager.ShowDialog(new MessageViewModel(ApplicationStrings.SavingContactHeader, validationResult));
+                    WindowManager.Value.ShowDialog(new MessageViewModel(ApplicationStrings.SavingContactHeader, validationResult));
                     return;
                 }
                 PrepareSave();

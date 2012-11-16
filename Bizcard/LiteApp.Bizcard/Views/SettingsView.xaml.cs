@@ -11,24 +11,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
-using Caliburn.Micro;
-using System.ComponentModel.Composition;
-using LiteApp.Bizcard.Helpers;
-using MahApps.Metro;
-using LiteApp.Bizcard.Framework;
-using LiteApp.Bizcard.ViewModels;
 
 namespace LiteApp.Bizcard.Views
 {
-
     /// <summary>
-    /// Interaction logic for ShellView.xaml
+    /// Interaction logic for SettingsView.xaml
     /// </summary>
-    public partial class ShellView : MetroWindow
+    public partial class SettingsView : MetroWindow
     {
-        public ShellView()
+        public SettingsView()
         {
             InitializeComponent();
-        } 
+        }
     }
 }

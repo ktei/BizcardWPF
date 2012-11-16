@@ -73,7 +73,7 @@
                 </ListBox>
             </Grid>
         </Grid>
-        <GridSplitter Grid.Column="1" Background="{StaticResource Secondary}" HorizontalAlignment="Stretch" />
+        <GridSplitter Grid.Column="1" Background="{StaticResource SecondaryBrush}" HorizontalAlignment="Stretch" />
         <Grid Grid.Column="2" Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

@@ -18,12 +18,6 @@ namespace LiteApp.Bizcard
         CompositionContainer _container;
         SterlingService _sterlingService;
 
-        public AppBootstrapper()
-        {
-            _sterlingService = new SterlingService();
-            _sterlingService.StartService();
-        }
-
         #region Properties
 
         public CompositionContainer Container
@@ -38,6 +32,8 @@ namespace LiteApp.Bizcard
         protected override void Configure()
         {
             ConfigureContainer();
+            _sterlingService = new SterlingService();
+            _sterlingService.StartService();
         }
 
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)

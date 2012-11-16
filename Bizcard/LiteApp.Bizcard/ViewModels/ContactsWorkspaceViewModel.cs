@@ -194,21 +194,25 @@ namespace LiteApp.Bizcard.ViewModels
 
         public void Delete(IList selectedItems)
         {
-            List<int> ids = new List<int>();
-            foreach (ContactViewModel item in selectedItems)
+            if (WindowManager.Value.ShowDialog(new MessageViewModel(ApplicationStrings.DeletingContactsHeader, ApplicationStrings.ConfirmDeletingContacts, 
+                MessageViewModel.Buttons.YesNo, MessageViewModel.HeaderIcon.Question)) == true)
             {
-                ids.Add(item.Id);
+                List<int> ids = new List<int>();
+                foreach (ContactViewModel item in selectedItems)
+                {
+                    ids.Add(item.Id);
+                }
+                ContactRepository.DeleteContacts(ids);
+                Array itemsCopy = Array.CreateInstance(typeof(ContactViewModel), selectedItems.Count);
+                selectedItems.CopyTo(itemsCopy, 0);
+                _isDeleting = true; // Lock the list to reduce the times items get activated
+                foreach (ContactViewModel item in itemsCopy)
+                {
+                    Items.Remove(item);
+                }
+                _isDeleting = false;
+                ActivateItem(null);
             }
-            ContactRepository.DeleteContacts(ids);
-            Array itemsCopy = Array.CreateInstance(typeof(ContactViewModel), selectedItems.Count);
-            selectedItems.CopyTo(itemsCopy, 0);
-            _isDeleting = true; // Lock the list to reduce the times items get activated
-            foreach (ContactViewModel item in itemsCopy)
-            {
-                Items.Remove(item);
-            }
-            _isDeleting = false;
-            ActivateItem(null);
         }
 
         public void ManageGroups()

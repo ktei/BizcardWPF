@@ -15,6 +15,9 @@ using MahApps.Metro.Controls;
 using LiteApp.Bizcard.Helpers;
 using LiteApp.Bizcard.ViewModels;
 using LiteApp.Bizcard.Resources;
+using Caliburn.Micro;
+using System.ComponentModel.Composition;
+using LiteApp.Bizcard.Helpers;
 
 namespace LiteApp.Bizcard.Views
 {
@@ -46,14 +49,10 @@ namespace LiteApp.Bizcard.Views
                     binding.UpdateSource();
                 }
             }
-            (this.DataContext as ManageGroupsViewModel).HasValidationErrors = validationError.Length > 0;
+            (this.DataContext as ManageGroupsViewModel).ValidationErrors = validationError;
             if (validationError.Length == 0)
             {
                 this.DialogResult = true;
-            }
-            else
-            {
-                MessageBox.Show(validationError, "Manage Groups", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

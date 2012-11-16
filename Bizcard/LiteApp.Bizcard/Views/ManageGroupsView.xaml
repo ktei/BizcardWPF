@@ -67,9 +67,9 @@
         <Border Grid.Row="3">
             <StackPanel Orientation="Horizontal" Margin="0,20,0,0" HorizontalAlignment="Right">
                 <Button x:Name="Save" Content="{Binding Strings.OkayLabel, Source={StaticResource AppResx}}" Click="Save_Click"
-                        Foreground="White"  Background="{StaticResource Main}" Width="85" />
+                        Foreground="White"  Background="{DynamicResource MainBrush}" Width="85" />
                 <Button x:Name="Rollback" Content="{Binding Strings.CancelLabel, Source={StaticResource AppResx}}" Click="Rollback_Click"
-                        Foreground="White" Background="{StaticResource Main}" Width="85" />
+                        Foreground="White" Background="{DynamicResource MainBrush}" Width="85" />
             </StackPanel>
         </Border>
     </Grid>

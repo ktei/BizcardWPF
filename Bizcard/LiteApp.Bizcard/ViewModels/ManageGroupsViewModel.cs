@@ -24,10 +24,14 @@ namespace LiteApp.Bizcard.ViewModels
         public ManageGroupsViewModel()
         {
             DisplayName = ApplicationStrings.ManageGroupsTitle;
+            ValidationErrors = string.Empty;
         }
 
         [Import]
         public RepositoryFactory RepositoryFactory { get; set; }
+
+        [Import]
+        public Lazy<IWindowManager> WindowManager { get; set; }
 
         public IGroupRepository GroupRepository
         {
@@ -41,7 +45,7 @@ namespace LiteApp.Bizcard.ViewModels
             }
         }
 
-        public bool HasValidationErrors { get; set; }
+        public string ValidationErrors { get; set; }
 
         public IEnumerable<GroupViewModel> Items
         {
@@ -70,8 +74,11 @@ namespace LiteApp.Bizcard.ViewModels
 
         public void Save()
         {
-            if (HasValidationErrors)
+            if (ValidationErrors.Length > 0)
+            {
+                WindowManager.Value.ShowDialog(new MessageViewModel(ApplicationStrings.ManageGroupsTitle, ValidationErrors));
                 return;
+            }
 
             if (_deletedGroupIds.Count > 0)
             {

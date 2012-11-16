@@ -11,7 +11,8 @@
                     <resx:ApplicationResources x:Key="AppResx"/>
                     
                 </ResourceDictionary>
-                <ResourceDictionary Source="Views/Styles.xaml"/>
+                <ResourceDictionary Source="Views/BlueThemeStyles.xaml"/>
+                <ResourceDictionary Source="Views/ControlStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

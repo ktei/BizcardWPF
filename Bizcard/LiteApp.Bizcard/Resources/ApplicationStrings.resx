@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddContactTip" xml:space="preserve">
-    <value>Add contact</value>
+    <value>Add contacts</value>
   </data>
   <data name="AddressLabel" xml:space="preserve">
     <value>Address</value>
@@ -129,14 +129,20 @@
   <data name="CancelLabel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="ConfirmDeletingContacts" xml:space="preserve">
+    <value>The selected contacts will be permanently deleted. Are you sure you want to continue?</value>
+  </data>
   <data name="DefaultContactName" xml:space="preserve">
     <value>New contact</value>
   </data>
   <data name="DeleteContactTip" xml:space="preserve">
     <value>Delete contacts</value>
   </data>
+  <data name="DeletingContactsHeader" xml:space="preserve">
+    <value>Deleting contacts</value>
+  </data>
   <data name="EditContactTip" xml:space="preserve">
-    <value>Edit contact</value>
+    <value>Edit contacts</value>
   </data>
   <data name="EmailLabel" xml:space="preserve">
     <value>Email</value>
@@ -171,6 +177,9 @@
   <data name="NoGroupsFound" xml:space="preserve">
     <value>No groups can be found.</value>
   </data>
+  <data name="NoLabel" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="NotesLabel" xml:space="preserve">
     <value>Notes</value>
   </data>
@@ -200,5 +209,8 @@
   </data>
   <data name="WebsiteLabel" xml:space="preserve">
     <value>Website</value>
+  </data>
+  <data name="YesLabel" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

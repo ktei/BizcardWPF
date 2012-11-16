@@ -61,7 +61,7 @@ namespace LiteApp.Bizcard.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gropu name cannot be empty..
+        ///   Looks up a localized string similar to Group name cannot be empty..
         /// </summary>
         public static string GroupNameRequired {
             get {

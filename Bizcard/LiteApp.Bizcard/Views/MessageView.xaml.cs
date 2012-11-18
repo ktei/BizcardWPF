@@ -19,7 +19,7 @@ namespace LiteApp.Bizcard.Views
     /// <summary>
     /// Interaction logic for MessageView.xaml
     /// </summary>
-    public partial class MessageView : MetroWindow
+    public partial class MessageView : MetroWindowEx
     {
         MessageViewModel _messageViewModel;
 

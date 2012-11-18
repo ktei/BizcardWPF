@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Caliburn.Micro;
-using LiteApp.Bizcard.Framework;
-using System.ComponentModel.Composition;
-using LiteApp.Bizcard.Data;
-using LiteApp.Bizcard.Helpers;
-using System.Collections.ObjectModel;
-using System.Threading;
 using System.Collections;
-using LiteApp.Bizcard.Models;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Linq;
 using System.Windows.Data;
+using Caliburn.Micro;
+using LiteApp.Bizcard.Data;
+using LiteApp.Bizcard.Framework;
+using LiteApp.Bizcard.Models;
 using LiteApp.Bizcard.Resources;
 
 namespace LiteApp.Bizcard.ViewModels
@@ -31,9 +27,6 @@ namespace LiteApp.Bizcard.ViewModels
 
         [Import]
         public RepositoryFactory RepositoryFactory { get; set; }
-
-        [Import]
-        public IGlobalConfiguration Configuration { get; set; }
 
         [Import]
         public ManageGroupsViewModel ManageGroupsViewModel { get; set; }
@@ -194,7 +187,7 @@ namespace LiteApp.Bizcard.ViewModels
 
         public void Delete(IList selectedItems)
         {
-            if (WindowManager.Value.ShowDialog(new MessageViewModel(ApplicationStrings.DeletingContactsHeader, ApplicationStrings.ConfirmDeletingContacts, 
+            if (selectedItems != null && selectedItems.Count > 0 && WindowManager.Value.ShowDialog(new MessageViewModel(ApplicationStrings.DeletingContactsHeader, ApplicationStrings.ConfirmDeletingContacts, 
                 MessageViewModel.Buttons.YesNo, MessageViewModel.HeaderIcon.Question)) == true)
             {
                 List<int> ids = new List<int>();
@@ -268,10 +261,6 @@ namespace LiteApp.Bizcard.ViewModels
                     try
                     {
                         IsBusy = true;
-                        if (Configuration.MockDelay)
-                        {
-                            Thread.Sleep(Configuration.DelayInterval);
-                        }
                         var data = ContactRepository.GetContacts();
                         Items.AddRange(data.Select(x => new ContactViewModel(x, this)));
                         if (Items.Count > 0)

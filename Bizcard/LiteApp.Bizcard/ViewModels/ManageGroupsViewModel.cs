@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Caliburn.Micro;
-using LiteApp.Bizcard.Resources;
 using System.ComponentModel.Composition;
-using LiteApp.Bizcard.Data;
-using LiteApp.Bizcard.Models;
-using LiteApp.Bizcard.Data.Sterling;
+using System.Linq;
 using System.Windows.Input;
+using Caliburn.Micro;
+using LiteApp.Bizcard.Data;
+using LiteApp.Bizcard.Data.Sterling;
 using LiteApp.Bizcard.Helpers;
-using System.ComponentModel;
+using LiteApp.Bizcard.Models;
+using LiteApp.Bizcard.Resources;
 
 namespace LiteApp.Bizcard.ViewModels
 {
@@ -33,7 +31,7 @@ namespace LiteApp.Bizcard.ViewModels
         [Import]
         public Lazy<IWindowManager> WindowManager { get; set; }
 
-        public IGroupRepository GroupRepository
+        private IGroupRepository GroupRepository
         {
             get
             {

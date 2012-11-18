@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace LiteApp.Bizcard.ViewModels
+namespace LiteApp.Bizcard.Models
 {
     // #FFD53333 (Red)
     // #FF6DD533 (Green)

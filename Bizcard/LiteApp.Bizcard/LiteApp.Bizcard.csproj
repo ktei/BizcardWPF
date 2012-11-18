@@ -81,6 +81,7 @@
     <Compile Include="Data\IGroupRepository.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Data\IRepositoryMetadata.cs" />
+    <Compile Include="Data\IUserSettingsRepository.cs" />
     <Compile Include="Data\Mock\ContactRepository.cs" />
     <Compile Include="Data\Mock\GroupRepository.cs" />
     <Compile Include="Data\RepositoryFactory.cs" />
@@ -89,11 +90,13 @@
     <Compile Include="Data\Sterling\IdentityTrigger.cs" />
     <Compile Include="Data\Sterling\ContactRepository.cs" />
     <Compile Include="Data\Sterling\SterlingService.cs" />
+    <Compile Include="Data\Sterling\UserSettingsRepository.cs" />
     <Compile Include="Framework\DataSource.cs" />
-    <Compile Include="Framework\IGlobalConfiguration.cs" />
+    <Compile Include="Framework\IConfiguration.cs" />
     <Compile Include="Framework\IWorkspace.cs" />
     <Compile Include="Framework\IWorkspaceMetadata.cs" />
-    <Compile Include="GlobalConfiguration.cs" />
+    <Compile Include="Models\UserSettings.cs" />
+    <Compile Include="SterlingConfiguration.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\MefExtensions.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
@@ -107,7 +110,6 @@
     <Compile Include="Models\ModelExtensions.cs" />
     <Compile Include="Models\Phone.cs" />
     <Compile Include="Models\PhoneType.cs" />
-    <Compile Include="Models\PinyinLookupEntry.cs" />
     <Compile Include="Resources\ApplicationResources.cs" />
     <Compile Include="Resources\ApplicationStrings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -138,7 +140,8 @@
     <Compile Include="ViewModels\PhoneViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="ViewModels\ThemeColor.cs" />
+    <Compile Include="Models\ThemeColor.cs" />
+    <Compile Include="ViewModels\ThemeMessage.cs" />
     <Compile Include="ViewModels\ThemeViewModel.cs" />
     <Compile Include="Views\BooleanToVisiblityConverter.cs" />
     <Compile Include="Views\ContactInfoCategoryToTabSelectionConverter.cs" />
@@ -162,6 +165,7 @@
     <Compile Include="Views\MessageView.xaml.cs">
       <DependentUpon>MessageView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MetroWindowEx.cs" />
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
@@ -212,7 +216,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\BlueThemeStyles.xaml">
+    <Page Include="Views\Themes\BlueThemeStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -229,6 +233,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Contact\EditForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Themes\GreenThemeStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -249,6 +257,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ControlStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Themes\OrangeThemeStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Themes\PurpleThemeStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Themes\RedThemeStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

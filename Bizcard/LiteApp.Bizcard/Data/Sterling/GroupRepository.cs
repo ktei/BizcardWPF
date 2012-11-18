@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using LiteApp.Bizcard.Models;
 using System.ComponentModel.Composition;
+using System.Linq;
 using LiteApp.Bizcard.Framework;
+using LiteApp.Bizcard.Models;
 
 namespace LiteApp.Bizcard.Data.Sterling
 {

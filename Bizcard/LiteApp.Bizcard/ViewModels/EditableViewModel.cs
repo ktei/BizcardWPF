@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Caliburn.Micro;
-using System.ComponentModel;
+﻿using Caliburn.Micro;
 
 namespace LiteApp.Bizcard.ViewModels
 {

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using LiteApp.Bizcard.Framework;
-using Caliburn.Micro;
 using System.ComponentModel.Composition;
+using System.Linq;
+using Caliburn.Micro;
+using LiteApp.Bizcard.Framework;
 using LiteApp.Bizcard.Resources;
-using LiteApp.Bizcard.Data;
 
 namespace LiteApp.Bizcard.ViewModels
 {
@@ -22,9 +20,6 @@ namespace LiteApp.Bizcard.ViewModels
 
         [ImportMany]
         public IEnumerable<Lazy<IWorkspace, IWorkspaceMetadata>> Workspaces { get; set; }
-
-        [Import]
-        public Lazy<SettingsViewModel> Settings { get; set; }
 
         [Import]
         public Lazy<IWindowManager> WindowManager { get; set; }
@@ -46,7 +41,7 @@ namespace LiteApp.Bizcard.ViewModels
 
         public void ChangeSettings()
         {
-            WindowManager.Value.ShowDialog(Settings.Value);
+            WindowManager.Value.ShowDialog(new SettingsViewModel());
         }
 
         #endregion // Public Methods

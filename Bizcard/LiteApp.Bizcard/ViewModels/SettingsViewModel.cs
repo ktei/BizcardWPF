@@ -1,20 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel.Composition;
 using Caliburn.Micro;
-using MahApps.Metro;
-using System.ComponentModel.Composition;
+using LiteApp.Bizcard.Framework;
+using LiteApp.Bizcard.Helpers;
+using LiteApp.Bizcard.Models;
 using LiteApp.Bizcard.Resources;
+using MahApps.Metro;
 
 namespace LiteApp.Bizcard.ViewModels
 {
-    [Export]
     public class SettingsViewModel : Conductor<ThemeViewModel>.Collection.OneActive
     {
         public SettingsViewModel()
         {
             DisplayName = ApplicationStrings.SettingsLabel;
+            this.SatisfyImports();
+        }
+
+        [Import]
+        public IEventAggregator EventAggregator { get; set; }
+
+        [Import]
+        public IConfiguration Configuration { get; set; }
+
+        public void Save()
+        {
+            Configuration.Save();
+        }
+
+        public void Cancel()
+        {
+            Configuration.Rollback();
         }
 
         protected override void OnInitialize()
@@ -26,6 +41,11 @@ namespace LiteApp.Bizcard.ViewModels
         public override void ActivateItem(ThemeViewModel item)
         {
             base.ActivateItem(item);
+            if (item != null)
+            {
+                EventAggregator.Publish(new ThemeMessage(item.Color));
+                Configuration.Color = item.Color;
+            }
         }
 
         void LoadThemes()

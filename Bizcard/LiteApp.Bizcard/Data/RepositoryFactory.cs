@@ -28,6 +28,6 @@ namespace LiteApp.Bizcard.Data
         public IEnumerable<Lazy<IRepository, IRepositoryMetadata>> RepositoryPool { get; set; }
 
         [Import]
-        public IGlobalConfiguration Configuration { get; set; }
+        public IConfiguration Configuration { get; set; }
     }
 }

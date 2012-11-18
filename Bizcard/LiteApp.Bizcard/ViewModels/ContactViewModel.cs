@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Linq;
 using System.Windows.Input;
 using Caliburn.Micro;
+using LiteApp.Bizcard.Data;
 using LiteApp.Bizcard.Helpers;
 using LiteApp.Bizcard.Models;
-using System.ComponentModel.Composition;
-using LiteApp.Bizcard.Data;
-using System.Linq;
-using System;
 using LiteApp.Bizcard.Resources;
 
 namespace LiteApp.Bizcard.ViewModels

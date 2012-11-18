@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using LiteApp.Bizcard.Models;
 
 namespace LiteApp.Bizcard.Framework
 {
-    public interface IGlobalConfiguration
+    public interface IConfiguration
     {
         DataSource DataSource { get; }
-        bool MockDelay { get; }
-        int DelayInterval { get; }
+        ThemeColor Color { get; set; }
+        void Save();
+        void Rollback();
     }
 }

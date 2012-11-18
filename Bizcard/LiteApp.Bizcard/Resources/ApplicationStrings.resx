@@ -126,8 +126,14 @@
   <data name="ApplicationName" xml:space="preserve">
     <value>Bizcard</value>
   </data>
+  <data name="ApplyLabel" xml:space="preserve">
+    <value>Apply</value>
+  </data>
   <data name="CancelLabel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="ChooseAppColorLabel" xml:space="preserve">
+    <value>Choose your app color</value>
   </data>
   <data name="ConfirmDeletingContacts" xml:space="preserve">
     <value>The selected contacts will be permanently deleted. Are you sure you want to continue?</value>

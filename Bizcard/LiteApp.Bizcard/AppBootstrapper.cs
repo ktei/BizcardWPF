@@ -36,14 +36,6 @@ namespace LiteApp.Bizcard
             _sterlingService.StartService();
         }
 
-        protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
-        {
-            base.OnStartup(sender, e);
-            //System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("zh");
-            //System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh");
-
-        }
-
         protected override void OnExit(object sender, EventArgs e)
         {
             SterlingService.Current.Dispose();

@@ -1,6 +1,7 @@
-﻿<metro:MetroWindow x:Class="LiteApp.Bizcard.Views.MessageView"
+﻿<local:MetroWindowEx x:Class="LiteApp.Bizcard.Views.MessageView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:LiteApp.Bizcard.Views"
         xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" WindowStartupLocation="CenterOwner"
         SizeToContent="Height" Width="500" ResizeMode="NoResize">
     <Window.Resources>
@@ -39,4 +40,4 @@
             <Button x:Name="NegativeButton" Content="No" Width="85" Background="{DynamicResource MainBrush}" Foreground="White" Click="NegativeButton_Click"/>
         </StackPanel>
     </Grid>
-</metro:MetroWindow>
+</local:MetroWindowEx>

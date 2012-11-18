@@ -1,30 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using MahApps.Metro.Controls;
 using LiteApp.Bizcard.Helpers;
-using LiteApp.Bizcard.ViewModels;
 using LiteApp.Bizcard.Resources;
-using Caliburn.Micro;
-using System.ComponentModel.Composition;
-using LiteApp.Bizcard.Helpers;
+using LiteApp.Bizcard.ViewModels;
 
 namespace LiteApp.Bizcard.Views
 {
     /// <summary>
     /// Interaction logic for ManageGroupView.xaml
     /// </summary>
-    public partial class ManageGroupsView : MetroWindow
+    public partial class ManageGroupsView : MetroWindowEx
     {
         public ManageGroupsView()
         {

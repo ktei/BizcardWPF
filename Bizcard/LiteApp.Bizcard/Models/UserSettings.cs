@@ -5,8 +5,10 @@ using System.Text;
 
 namespace LiteApp.Bizcard.Models
 {
-    public class PinyinLookupEntry
+    public class UserSettings
     {
-        
+        public int Id { get; set; }
+
+        public ThemeColor Color { get; set; }
     }
 }

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Wintellect.Sterling.Database;
+﻿using System.Collections.Generic;
 using LiteApp.Bizcard.Models;
+using Wintellect.Sterling.Database;
 
 namespace LiteApp.Bizcard.Data.Sterling
 {
@@ -31,7 +28,10 @@ namespace LiteApp.Bizcard.Data.Sterling
                            
                            // Defines Group table
                            CreateTableDefinition<Group, int>(x => x.Id)
-                                .WithIndex<Group, string, int>("Name", x => x.Name)
+                                .WithIndex<Group, string, int>("Name", x => x.Name),
+                           
+                           // Defines UserSettings table
+                           CreateTableDefinition<UserSettings, int>(x => x.Id)
                        };
         }
     }

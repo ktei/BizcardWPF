@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using LiteApp.Bizcard.Models;
-using LiteApp.Bizcard.Helpers;
 using Caliburn.Micro;
+using LiteApp.Bizcard.Helpers;
+using LiteApp.Bizcard.Models;
 
 namespace LiteApp.Bizcard.ViewModels
 {

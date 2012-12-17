@@ -30,6 +30,7 @@ namespace LiteApp.Bizcard.ViewModels
         public void Cancel()
         {
             Configuration.Rollback();
+            EventAggregator.Publish(new ThemeMessage(Configuration.Color));
         }
 
         protected override void OnInitialize()

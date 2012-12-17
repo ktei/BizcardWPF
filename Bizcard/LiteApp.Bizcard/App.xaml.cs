@@ -32,8 +32,8 @@ namespace LiteApp.Bizcard
             {
                 IoC.Get<ILogger>().Error(e.Exception.ToString());
             }
-            var model = new MessageViewModel(ApplicationErrorStrings.UnexpectedError, MessageViewModel.GenericErrorContents, 
-                MessageViewModel.Buttons.OK, MessageViewModel.HeaderIcon.Error);
+            var model = new MessageViewModel(ApplicationErrorStrings.UnexpectedError, MessageViewModel.GenericErrorContents,
+                MessageViewModel.Buttons.OK, MessageViewModel.HeaderIcon.Error) { DisplayName = ApplicationErrorStrings.Oops };
             IoC.Get<IWindowManager>().ShowDialog(model);
         }
 

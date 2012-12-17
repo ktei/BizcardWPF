@@ -29,5 +29,10 @@ namespace LiteApp.Bizcard.Views
         {
             (this.DataContext as ContactsWorkspaceViewModel).Search(SearchBox.Text.Trim());
         }
+
+        private void CommandBinding_Delete_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            (this.DataContext as ContactsWorkspaceViewModel).Delete(Items.SelectedItems);
+        }
     }
 }

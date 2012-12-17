@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using LiteApp.Bizcard.Views.Helpers;
 using LiteApp.Bizcard.ViewModels;
 
 namespace LiteApp.Bizcard.Views
@@ -33,6 +34,18 @@ namespace LiteApp.Bizcard.Views
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
+        }
+
+        private void SettingsView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Save.AutomationPeerInvoke();
+            }
+            else if (e.Key == Key.Escape)
+            {
+                Cancel.AutomationPeerInvoke();
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using LiteApp.Bizcard.Helpers;
 using LiteApp.Bizcard.Resources;
 using LiteApp.Bizcard.ViewModels;
+using LiteApp.Bizcard.Views.Helpers;
 
 namespace LiteApp.Bizcard.Views
 {
@@ -44,6 +45,18 @@ namespace LiteApp.Bizcard.Views
         private void Rollback_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
+        }
+
+        private void ManageGroupsView_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                Save.AutomationPeerInvoke();
+            }
+            else if (e.Key == System.Windows.Input.Key.Escape)
+            {
+                Rollback.AutomationPeerInvoke();
+            }
         }
     }
 }

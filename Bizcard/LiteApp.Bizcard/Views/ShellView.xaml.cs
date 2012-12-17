@@ -29,6 +29,16 @@ namespace LiteApp.Bizcard.Views
         public ShellView()
         {
             InitializeComponent();
+        }
+
+        private void CommandBinding_New_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            var shell = (ShellViewModel)this.DataContext;
+            ContactsWorkspaceViewModel contacts = shell.ActiveItem as ContactsWorkspaceViewModel;
+            if (contacts != null)
+            {
+                contacts.Add();
+            }
         } 
     }
 }

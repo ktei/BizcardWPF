@@ -79,6 +79,15 @@ namespace LiteApp.Bizcard.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Oops!.
+        /// </summary>
+        public static string Oops {
+            get {
+                return ResourceManager.GetString("Oops", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unexpected error.
         /// </summary>
         public static string UnexpectedError {

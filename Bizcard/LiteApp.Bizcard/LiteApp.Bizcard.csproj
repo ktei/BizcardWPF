@@ -57,6 +57,7 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -168,6 +169,7 @@
     </Compile>
     <Compile Include="Views\Controls\SearchTextBox.cs" />
     <Compile Include="Views\EnumToDescriptionConverter.cs" />
+    <Compile Include="Views\Helpers\ButtonExtensions.cs" />
     <Compile Include="Views\ManageGroupsView.xaml.cs">
       <DependentUpon>ManageGroupsView.xaml</DependentUpon>
     </Compile>

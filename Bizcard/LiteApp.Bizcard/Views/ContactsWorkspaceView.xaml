@@ -10,6 +10,9 @@
              xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.CommandBindings>
+        <CommandBinding Command="Delete" Executed="CommandBinding_Delete_Executed"/>
+    </UserControl.CommandBindings>
     <UserControl.Resources>
         <local:BooleanToVisiblityConverter x:Key="boolToVis" />
         <local:BooleanToVisiblityConverter x:Key="boolToVisReverse" Reverse="True"/>

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:local="clr-namespace:LiteApp.Bizcard.Views"
-             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:cal="http://www.caliburnproject.org" KeyDown="ManageGroupsView_KeyDown"
              mc:Ignorable="d" 
              WindowStartupLocation="CenterOwner" Width="600" Height="400" ResizeMode="NoResize">
     <Window.Resources>

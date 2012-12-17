@@ -272,7 +272,6 @@ namespace LiteApp.Bizcard.ViewModels
                     catch (Exception ex)
                     {
                         IoC.Get<ILogger>().Error(ex.ToString());
-                        // TODO: handle exception properly
                         Execute.OnUIThread(() =>
                             {
                                 IoC.Get<IWindowManager>().ShowDialog(

@@ -5,6 +5,9 @@
         xmlns:local="clr-namespace:LiteApp.Bizcard.Views"
         xmlns:cal="http://www.caliburnproject.org"
         WindowState="Maximized" ResizeMode="CanMinimize" FontSize="14">
+    <local:MetroWindowEx.CommandBindings>
+        <CommandBinding Command="New" Executed="CommandBinding_New_Executed"/>
+    </local:MetroWindowEx.CommandBindings>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

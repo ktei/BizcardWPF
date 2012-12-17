@@ -123,6 +123,9 @@
   <data name="GenericErrorContents" xml:space="preserve">
     <value>We apologize for an unexpected error occurring during this operation. For more information, please check log files under {0} and contact Rui Cheng via email ktei2008@gmail.com.</value>
   </data>
+  <data name="Oops" xml:space="preserve">
+    <value>Oops!</value>
+  </data>
   <data name="UnexpectedError" xml:space="preserve">
     <value>Unexpected error</value>
   </data>

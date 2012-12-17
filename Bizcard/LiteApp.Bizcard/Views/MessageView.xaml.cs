@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using LiteApp.Bizcard.ViewModels;
 using LiteApp.Bizcard.Resources;
+using LiteApp.Bizcard.Views.Helpers;
 
 namespace LiteApp.Bizcard.Views
 {
@@ -107,6 +108,16 @@ namespace LiteApp.Bizcard.Views
         private void NegativeButton_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
+        }
+
+        private void MessageView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                this.PositiveButton.AutomationPeerInvoke();
+            }
+            else if (e.Key == Key.Escape)
+                this.NegativeButton.AutomationPeerInvoke();
         }
     }
 }

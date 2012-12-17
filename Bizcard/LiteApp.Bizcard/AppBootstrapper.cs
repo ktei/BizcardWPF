@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Caliburn.Micro;
-using LiteApp.Bizcard.Framework;
-using System.ComponentModel.Composition.Hosting;
-using System.ComponentModel.Composition.Primitives;
-using System.Reflection;
 using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.Linq;
+using System.Reflection;
+using Caliburn.Micro;
 using LiteApp.Bizcard.Data.Sterling;
-using System.Globalization;
+using LiteApp.Bizcard.Framework;
+using LiteApp.Bizcard.Logging;
 
 namespace LiteApp.Bizcard
 {
@@ -75,6 +73,7 @@ namespace LiteApp.Bizcard
             var batch = new CompositionBatch();
             batch.AddExportedValue<IWindowManager>(new WindowManager());
             batch.AddExportedValue<IEventAggregator>(new EventAggregator());
+            batch.AddExportedValue<ILogger>(new TextFileLogger());
             _container.Compose(batch);
         }
 

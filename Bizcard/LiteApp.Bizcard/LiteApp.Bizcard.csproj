@@ -95,6 +95,10 @@
     <Compile Include="Framework\IConfiguration.cs" />
     <Compile Include="Framework\IWorkspace.cs" />
     <Compile Include="Framework\IWorkspaceMetadata.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\LoggingFailedEventArgs.cs" />
+    <Compile Include="Logging\LogLevel.cs" />
+    <Compile Include="Logging\TextFileLogger.cs" />
     <Compile Include="Models\UserSettings.cs" />
     <Compile Include="SterlingConfiguration.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />

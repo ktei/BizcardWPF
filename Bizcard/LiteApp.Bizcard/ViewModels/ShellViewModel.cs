@@ -5,6 +5,7 @@ using System.Linq;
 using Caliburn.Micro;
 using LiteApp.Bizcard.Framework;
 using LiteApp.Bizcard.Resources;
+using LiteApp.Bizcard.Logging;
 
 namespace LiteApp.Bizcard.ViewModels
 {

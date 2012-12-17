@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Caliburn.Micro;
+using LiteApp.Bizcard.Framework;
+using LiteApp.Bizcard.Resources;
 
 namespace LiteApp.Bizcard.ViewModels
 {
@@ -75,6 +77,11 @@ namespace LiteApp.Bizcard.ViewModels
             }
         }
 
+        public static string GenericErrorContents
+        {
+            get { return string.Format(ApplicationErrorStrings.GenericErrorContents, IoC.Get<IConfiguration>().LogFolderPath); }
+        }
+
         public enum Buttons
         {
             OK = 0,
@@ -85,7 +92,8 @@ namespace LiteApp.Bizcard.ViewModels
         public enum HeaderIcon
         {
             Exclamation = 0,
-            Question
+            Question,
+            Error
         }
     }
 }

@@ -12,5 +12,6 @@ namespace LiteApp.Bizcard.Framework
         ThemeColor Color { get; set; }
         void Save();
         void Rollback();
+        string LogFolderPath { get; }
     }
 }

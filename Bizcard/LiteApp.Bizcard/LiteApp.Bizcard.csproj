@@ -100,6 +100,11 @@
     <Compile Include="Logging\LogLevel.cs" />
     <Compile Include="Logging\TextFileLogger.cs" />
     <Compile Include="Models\UserSettings.cs" />
+    <Compile Include="Resources\ApplicationErrorStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApplicationErrorStrings.resx</DependentUpon>
+    </Compile>
     <Compile Include="SterlingConfiguration.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\MefExtensions.cs" />
@@ -196,6 +201,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ApplicationErrorStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApplicationErrorStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ApplicationStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

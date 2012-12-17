@@ -9,6 +9,7 @@ using LiteApp.Bizcard.Data;
 using LiteApp.Bizcard.Framework;
 using LiteApp.Bizcard.Models;
 using LiteApp.Bizcard.Resources;
+using LiteApp.Bizcard.Logging;
 
 namespace LiteApp.Bizcard.ViewModels
 {
@@ -268,10 +269,17 @@ namespace LiteApp.Bizcard.ViewModels
                             ActivateItem(Items[0]);
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        IoC.Get<ILogger>().Error(ex.ToString());
                         // TODO: handle exception properly
-                        throw;
+                        Execute.OnUIThread(() =>
+                            {
+                                IoC.Get<IWindowManager>().ShowDialog(
+                                    new MessageViewModel(ApplicationErrorStrings.FailedToLoadContacts,
+                                        MessageViewModel.GenericErrorContents, 
+                                        MessageViewModel.Buttons.OK, MessageViewModel.HeaderIcon.Error));
+                            });
                     }
                     finally
                     {

@@ -6,6 +6,9 @@ using LiteApp.Bizcard.Framework;
 using LiteApp.Bizcard.Helpers;
 using LiteApp.Bizcard.Models;
 using LiteApp.Bizcard.ViewModels;
+using System.Windows.Threading;
+using LiteApp.Bizcard.Logging;
+using LiteApp.Bizcard.Resources;
 
 namespace LiteApp.Bizcard
 {
@@ -17,9 +20,21 @@ namespace LiteApp.Bizcard
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            this.DispatcherUnhandledException += App_DispatcherUnhandledException;
             this.SatisfyImports();
             EventAggregator.Subscribe(this);
             ChangeColor(Configuration.Color); // Set up color
+        }
+
+        void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            if (e.Exception != null)
+            {
+                IoC.Get<ILogger>().Error(e.Exception.ToString());
+            }
+            var model = new MessageViewModel(ApplicationErrorStrings.UnexpectedError, MessageViewModel.GenericErrorContents, 
+                MessageViewModel.Buttons.OK, MessageViewModel.HeaderIcon.Error);
+            IoC.Get<IWindowManager>().ShowDialog(model);
         }
 
         [Import]

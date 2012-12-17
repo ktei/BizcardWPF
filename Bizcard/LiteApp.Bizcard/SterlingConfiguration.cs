@@ -2,6 +2,8 @@
 using LiteApp.Bizcard.Data;
 using LiteApp.Bizcard.Framework;
 using LiteApp.Bizcard.Models;
+using System.IO;
+using System;
 
 namespace LiteApp.Bizcard
 {
@@ -91,6 +93,12 @@ namespace LiteApp.Bizcard
             _settings = new UserSettings();
             _settings.Color = ThemeColor.Blue;
             Save(); // Save default by the way
+        }
+
+
+        public string LogFolderPath
+        {
+            get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Bizcard", "Log"); }
         }
     }
 }

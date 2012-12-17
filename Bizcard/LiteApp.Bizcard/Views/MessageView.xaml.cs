@@ -84,6 +84,7 @@ namespace LiteApp.Bizcard.Views
         {
             Exclamation.Visibility = System.Windows.Visibility.Collapsed;
             Question.Visibility = System.Windows.Visibility.Collapsed;
+            Error.Visibility = System.Windows.Visibility.Collapsed;
             if (_messageViewModel.Icon == MessageViewModel.HeaderIcon.Exclamation)
             {
                 Exclamation.Visibility = System.Windows.Visibility.Visible;
@@ -91,6 +92,10 @@ namespace LiteApp.Bizcard.Views
             else if (_messageViewModel.Icon == MessageViewModel.HeaderIcon.Question)
             {
                 Question.Visibility = System.Windows.Visibility.Visible;
+            }
+            else if (_messageViewModel.Icon == MessageViewModel.HeaderIcon.Error)
+            {
+                Error.Visibility = System.Windows.Visibility.Visible;
             }
         }
 

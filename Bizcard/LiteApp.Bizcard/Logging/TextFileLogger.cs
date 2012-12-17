@@ -1,5 +1,8 @@
 ﻿using System;
 using System.IO;
+using LiteApp.Bizcard.Framework;
+using System.ComponentModel.Composition;
+using Caliburn.Micro;
 
 namespace LiteApp.Bizcard.Logging
 {
@@ -62,9 +65,9 @@ namespace LiteApp.Bizcard.Logging
                 LoggingFailed(this, new LoggingFailedEventArgs() { LogMessage = logMessage, LogLevel = level });
         }
 
-        private static string GetLogFilePath()
+        private string GetLogFilePath()
         {
-            string logFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Bizcard", "Log");
+            string logFolder = IoC.Get<IConfiguration>().LogFolderPath;
 
             if (!Directory.Exists(logFolder))
             {
